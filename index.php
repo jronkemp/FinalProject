@@ -12,6 +12,7 @@ require __DIR__."/bootstrap.php";
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Thoughts\Models\Book;
+use Thoughts\Models\Movie;
 
 //TODO: Home Page
 
@@ -56,5 +57,40 @@ $app->get("/books/{id}", function (Request $request, Response $response, array $
 
    return $response->withStatus(200)->withJson($payload);
 });
+
+//TODO: Movie Table Related Endpoints
+
+$app->get("/movies", function (Request $request, Response $response, array $args){
+    $movies = Movie::all();
+
+    $payload = [];
+
+    foreach ($movies as $movie){
+        $payload[$movie->movie_id] = [
+            'movieTitle' => $movie->movieTitle,
+            'movieDirector' => $movie->movieDirector,
+            'movieReleaseDate' => $movie->movieReleaseDate,
+            'movieCoverImage' => $movie->movieCoverImage
+        ];
+    }
+    return $response->withStatus(200) -> withJson($payload);
+});
+
+$app->get("/movies/{id}", function (Request $request, Response $response, array $args){
+    $id = $args['id'];
+
+    $movie = new Movie();
+    $_movie = $movie->find($id);
+
+    $payload[$_movie->movie_id] = [
+        'movieTitle' => $movie->movieTitle,
+        'movieDirector' => $movie->movieDirector,
+        'movieReleaseDate' => $movie->movieReleaseDate,
+        'movieCoverImage' => $movie->movieCoverImage
+    ];
+
+    return $response->withStatus(200)->withJson($payload);
+});
+
 
 $app->run();

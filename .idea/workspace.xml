@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="" />
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +14,9 @@
     <execution>
       <phar pharPath="$USER_HOME$/composer.phar" interpreterId="ffa99a3a-28fd-465e-9e2c-5a51b4144dc7" />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -36,6 +41,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2012lcrWQ2i5LwfNQe5mQp0hQkX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -61,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1635197924988</updated>
-      <workItem from="1635197926186" duration="2836000" />
+      <workItem from="1635197926186" duration="3195000" />
     </task>
     <servers />
   </component>
@@ -73,10 +79,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635198378320" />
-    <state x="628" y="270" key="NewPhpClassDialog" timestamp="1635199899364">
+    <state x="828" y="441" key="Github.ShareDialog" timestamp="1635201177151">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="628" y="270" key="NewPhpClassDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635199899364" />
+    <state x="828" y="441" key="Github.ShareDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201177151" />
+    <state x="716" y="249" key="Github.UntrackedFilesDialog" timestamp="1635201212655">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="716" y="249" key="Github.UntrackedFilesDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201212655" />
+    <state x="628" y="270" key="NewPhpClassDialog" timestamp="1635201474375">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="628" y="270" key="NewPhpClassDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201474375" />
     <state x="781" y="467" key="NewPhpFileDialog" timestamp="1635199774275">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -85,5 +99,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2" timestamp="1635201236479">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201236479" />
   </component>
 </project>
