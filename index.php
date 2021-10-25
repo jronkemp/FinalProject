@@ -92,5 +92,11 @@ $app->get("/movies/{id}", function (Request $request, Response $response, array 
     return $response->withStatus(200)->withJson($payload);
 });
 
+//TODO: USER TABLE RELATED ENDPOINTS
+
+//TODO: POSTS TABLE RELATED ENDPOINTS
+
+//TODO: COMMENTS TABLE RELATED ENDPOINTS
+
 
 $app->run();
