@@ -13,7 +13,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Thoughts\Models\Book;
 use Thoughts\Models\Movie;
-
+//Hi can you see this?
 //TODO: Home Page
 
 $app -> get('/hello/{name}', function ($request, $response, $args){

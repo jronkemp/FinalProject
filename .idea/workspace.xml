@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="This Commit adds the get method for all movies as well as for single movies" />
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="This Commit adds the get method for all movies as well as for single movies">
+      <change beforePath="$PROJECT_DIR$/.idea/FinalProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FinalProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <phar pharPath="$USER_HOME$/composer.phar" interpreterId="ffa99a3a-28fd-465e-9e2c-5a51b4144dc7" />
@@ -36,6 +49,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/respect/stringifier" />
+      <path value="$PROJECT_DIR$/vendor/respect/validation" />
     </include_path>
   </component>
   <component name="ProjectId" id="2012lcrWQ2i5LwfNQe5mQp0hQkX" />
@@ -51,12 +66,6 @@
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -66,6 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1635197924988</updated>
       <workItem from="1635197926186" duration="3548000" />
+      <workItem from="1635445410442" duration="2909000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -84,35 +94,20 @@
     <MESSAGE value="This Commit adds the get method for all movies as well as for single movies" />
     <option name="LAST_COMMIT_MESSAGE" value="This Commit adds the get method for all movies as well as for single movies" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey" timestamp="1635198378320">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635198378320" />
-    <state x="828" y="441" key="Github.ShareDialog" timestamp="1635201177151">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="828" y="441" key="Github.ShareDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201177151" />
-    <state x="716" y="249" key="Github.UntrackedFilesDialog" timestamp="1635201212655">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="716" y="249" key="Github.UntrackedFilesDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201212655" />
-    <state x="628" y="270" key="NewPhpClassDialog" timestamp="1635201474375">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="628" y="270" key="NewPhpClassDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201474375" />
-    <state x="781" y="467" key="NewPhpFileDialog" timestamp="1635199774275">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="781" y="467" key="NewPhpFileDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635199774275" />
-    <state x="469" y="176" key="SettingsEditor" timestamp="1635201141136">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
-    <state x="560" y="277" key="Vcs.Push.Dialog.v2" timestamp="1635201859452">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201236479" />
-    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.61.1920.1055/0.0.1920.1080@0.0.1920.1080" timestamp="1635201859452" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/bootstrap.php</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/bootstrap.php</url>
+          <line>26</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
