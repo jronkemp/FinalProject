@@ -15,6 +15,9 @@ use Thoughts\Models\Book;
 use Thoughts\Models\Movie;
 
 //TODO: Home Page
+$app->get('/', function($request, $response, $args){
+    return $response->write("Hello, this is the homepage.");
+});
 
 $app -> get('/hello/{name}', function ($request, $response, $args){
     $name = $args['name'];
