@@ -14,6 +14,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Thoughts\Models\Book;
 use Thoughts\Models\Movie;
 //HI PEPPER DOES THIS WORK :))))
+echo "hey";
 //Home page for the API
 $app->get('/', function($request, $response, $args){
     return $response->write("Hello, this is the homepage.");
