@@ -13,13 +13,14 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Thoughts\Models\Book;
 use Thoughts\Models\Movie;
-//HI PEPPER DOES THIS WORK :))))
-echo "hey";
-//Home page for the API
+
+//TODO: Home Page
+//Shows the repsonse "Hello, this is the homepage".
 $app->get('/', function($request, $response, $args){
     return $response->write("Hello, this is the homepage.");
 });
 
+//Type hello/yourname in the url to recieve a hello message.
 $app -> get('/hello/{name}', function ($request, $response, $args){
     $name = $args['name'];
     return $response->write("Hello ".$name);
@@ -27,7 +28,6 @@ $app -> get('/hello/{name}', function ($request, $response, $args){
 );
 
 //TODO: BOOK TABLE RELATED ENDPOINTS
-
 $app->get("/books", function (Request $request, Response $response, array $args){
     $books = Book::all();
 
@@ -46,20 +46,20 @@ $app->get("/books", function (Request $request, Response $response, array $args)
 });
 
 $app->get("/books/{id}", function (Request $request, Response $response, array $args){
-   $id = $args['id'];
+    $id = $args['id'];
 
-   $book = new Book();
-   $_book = $book->find($id);
+    $book = new Book();
+    $_book = $book->find($id);
 
-   $payload[$_book->book_id] = [
-       'bookTitle' => $_book->bookTitle,
-       'bookAuthor' => $_book->bookAuthor,
-       'bookISBN' => $_book->bookISBN,
-       'bookReleaseDate' => $_book->bookReleaseDate,
-       'bookCoverImage' => $_book->bookCoverImage
-   ];
+    $payload[$_book->book_id] = [
+        'bookTitle' => $_book->bookTitle,
+        'bookAuthor' => $_book->bookAuthor,
+        'bookISBN' => $_book->bookISBN,
+        'bookReleaseDate' => $_book->bookReleaseDate,
+        'bookCoverImage' => $_book->bookCoverImage
+    ];
 
-   return $response->withStatus(200)->withJson($payload);
+    return $response->withStatus(200)->withJson($payload);
 });
 
 //TODO: Movie Table Related Endpoints
