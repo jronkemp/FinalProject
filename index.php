@@ -13,8 +13,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Thoughts\Models\Book;
 use Thoughts\Models\Movie;
-//Hi can you see this?
-//TODO: Home Page
+//HI PEPPER DOES THIS WORK :))))
+//Home page for the API
 $app->get('/', function($request, $response, $args){
     return $response->write("Hello, this is the homepage.");
 });
