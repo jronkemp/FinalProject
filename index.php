@@ -97,10 +97,57 @@ $app->get("/movies/{id}", function (Request $request, Response $response, array 
 });
 
 //TODO: USER TABLE RELATED ENDPOINTS
+$app->get("/users", function (Request $request, Response $response, array $args){
+    $users = user::all();
+
+    $payload = [];
+
+    foreach ($users as $user){
+        $payload[$user->user_id] = [
+            'firstName' => $user->firstname,
+            'lastName' => $user->lastname,
+            'email' => $user->email,
+            'username' => $user->username,
+            'password' => $user->password
+        ];
+    }
+    return $response->withStatus(200) -> withJson($payload);
+});
 
 //TODO: POSTS TABLE RELATED ENDPOINTS
+$app->get("/posts", function (Request $request, Response $response, array $args){
+    $posts = post::all();
+
+    $payload = [];
+
+    foreach ($posts as $post){
+        $payload[$post->post_id] = [
+            'postID' => $post->post_id,
+            'userID' => $post->user_id,
+            'title' => $post->title,
+            'content' => $post->content,
+            'bookID' => $post ->book_id
+            'movieID' => $post->movie_id
+        ];
+    }
+    return $response->withStatus(200) -> withJson($payload);
+});
 
 //TODO: COMMENTS TABLE RELATED ENDPOINTS
 
+$app->get("/comments", function (Request $request, Response $response, array $args){
+    $comments = comment::all();
 
+    $payload = [];
+
+    foreach ($comments as $comment){
+        $payload[$comment->_id] = [
+            'commentID' => $comment->comment_id,
+            'postID' => $comment->post_id,
+            'userID' => $comment->user_id,
+            'content' => $comment->content,
+        ];
+    }
+    return $response->withStatus(200) -> withJson($payload);
+});
 $app->run();
