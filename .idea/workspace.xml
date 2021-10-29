@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="seeing if you can see this">
-      <change beforePath="$PROJECT_DIR$/.idea/FinalProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FinalProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="This commit fixes the files that were messed up.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1635197924988</updated>
       <workItem from="1635197926186" duration="3548000" />
-      <workItem from="1635537768113" duration="138000" />
+      <workItem from="1635537768113" duration="279000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -84,45 +72,33 @@
       <option name="project" value="LOCAL" />
       <updated>1635201847455</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="This commit fixes the files that were messed up.">
+      <created>1635537964604</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635537964604</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="This Commit adds the get method for all movies as well as for single movies" />
-    <option name="LAST_COMMIT_MESSAGE" value="This Commit adds the get method for all movies as well as for single movies" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey" timestamp="1635198378320">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635198378320" />
-    <state x="828" y="441" key="Github.ShareDialog" timestamp="1635201177151">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="828" y="441" key="Github.ShareDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201177151" />
-    <state x="716" y="249" key="Github.UntrackedFilesDialog" timestamp="1635201212655">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="716" y="249" key="Github.UntrackedFilesDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201212655" />
-    <state x="628" y="270" key="NewPhpClassDialog" timestamp="1635201474375">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="628" y="270" key="NewPhpClassDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201474375" />
-    <state x="781" y="467" key="NewPhpFileDialog" timestamp="1635199774275">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="781" y="467" key="NewPhpFileDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635199774275" />
-    <state x="469" y="176" key="SettingsEditor" timestamp="1635201141136">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
-    <state x="560" y="277" key="Vcs.Push.Dialog.v2" timestamp="1635201859452">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201236479" />
-    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.61.1920.1055/0.0.1920.1080@0.0.1920.1080" timestamp="1635201859452" />
+    <MESSAGE value="This commit fixes the files that were messed up." />
+    <option name="LAST_COMMIT_MESSAGE" value="This commit fixes the files that were messed up." />
   </component>
 </project>
