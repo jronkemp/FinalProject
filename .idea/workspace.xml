@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="This commit fixes the files that were messed up.">
-      <change afterPath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thoughts/Models/User.php" afterDir="false" />
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="This commit adds endpoints for Users,Posts,and Comments.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +68,8 @@
       <updated>1635197924988</updated>
       <workItem from="1635197926186" duration="3548000" />
       <workItem from="1635537768113" duration="415000" />
-      <workItem from="1635692639349" duration="2741000" />
+      <workItem from="1635692639349" duration="3864000" />
+      <workItem from="1635696669755" duration="218000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -91,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635538064574</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="This commit adds endpoints for Users,Posts,and Comments.">
+      <created>1635695608238</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1635695608238</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +120,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="This Commit adds the get method for all movies as well as for single movies" />
     <MESSAGE value="This commit fixes the files that were messed up." />
-    <option name="LAST_COMMIT_MESSAGE" value="This commit fixes the files that were messed up." />
+    <MESSAGE value="This commit adds endpoints for Users,Posts,and Comments." />
+    <option name="LAST_COMMIT_MESSAGE" value="This commit adds endpoints for Users,Posts,and Comments." />
   </component>
 </project>

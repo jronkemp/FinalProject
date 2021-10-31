@@ -18,12 +18,12 @@ use Thoughts\Models\Post;
 use Thoughts\Models\Comment;
 
 //TODO: Home Page
-//Shows the repsonse "Hello, this is the homepage".
+//Shows the message "Hello, this is the homepage".
 $app->get('/', function($request, $response, $args){
     return $response->write("Hello, this is the homepage.");
 });
 
-//Type hello/yourname in the url to recieve a hello message.
+//Type hello/yourname in the url to receive a hello message with your name.
 $app -> get('/hello/{name}', function ($request, $response, $args){
     $name = $args['name'];
     return $response->write("Hello ".$name);

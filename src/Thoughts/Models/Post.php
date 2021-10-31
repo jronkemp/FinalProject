@@ -1,5 +1,5 @@
 <?php
-
+//File contains the class Post with the table and primary key.
 namespace Thoughts\Models;
 
 use Illuminate\Database\Eloquent\Model;
