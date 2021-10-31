@@ -13,6 +13,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Thoughts\Models\Book;
 use Thoughts\Models\Movie;
+use Thoughts\Models\User;
+use Thoughts\Models\Post;
+use Thoughts\Models\Comment;
 
 //TODO: Home Page
 //Shows the repsonse "Hello, this is the homepage".
@@ -28,6 +31,7 @@ $app -> get('/hello/{name}', function ($request, $response, $args){
 );
 
 //TODO: BOOK TABLE RELATED ENDPOINTS
+//GET all books
 $app->get("/books", function (Request $request, Response $response, array $args){
     $books = Book::all();
 
@@ -45,6 +49,7 @@ $app->get("/books", function (Request $request, Response $response, array $args)
     return $response->withStatus(200) -> withJson($payload);
 });
 
+//GET a books info using the user_id
 $app->get("/books/{id}", function (Request $request, Response $response, array $args){
     $id = $args['id'];
 
@@ -63,7 +68,7 @@ $app->get("/books/{id}", function (Request $request, Response $response, array $
 });
 
 //TODO: Movie Table Related Endpoints
-
+//GET all movies
 $app->get("/movies", function (Request $request, Response $response, array $args){
     $movies = Movie::all();
 
@@ -80,6 +85,7 @@ $app->get("/movies", function (Request $request, Response $response, array $args
     return $response->withStatus(200) -> withJson($payload);
 });
 
+//GET a movies info using the user_id
 $app->get("/movies/{id}", function (Request $request, Response $response, array $args){
     $id = $args['id'];
 
@@ -97,10 +103,117 @@ $app->get("/movies/{id}", function (Request $request, Response $response, array 
 });
 
 //TODO: USER TABLE RELATED ENDPOINTS
+//GET all users
+$app->get("/users", function (Request $request, Response $response, array $args){
+    $users = user::all();
+
+    $payload = [];
+
+    foreach ($users as $user){
+        $payload[$user->user_id] = [
+            'firstname' => $user->firstname,
+            'lastname' => $user->lastname,
+            'email' => $user->email,
+            'username' => $user->username,
+            'password'=>$user->password
+        ];
+    }
+    return $response->withStatus(200) -> withJson($payload);
+});
+
+//GET a users info using the user_id
+$app->get("/users/{id}", function (Request $request, Response $response, array $args){
+    $id = $args['id'];
+
+    $user = new User();
+    $_user = $user->find($id);
+
+    $payload[$_user->user_id] = [
+        'firstname' => $_user->firstname,
+        'lastname' => $_user->lastname,
+        'email' => $_user->email,
+        'username' => $_user->username,
+        'password'=>$_user->password
+    ];
+
+    return $response->withStatus(200)->withJson($payload);
+});
 
 //TODO: POSTS TABLE RELATED ENDPOINTS
+//GET all posts
+$app->get("/posts", function (Request $request, Response $response, array $args){
+    $posts = post::all();
+
+    $payload = [];
+
+    foreach ($posts as $post){
+        $payload[$post->post_id] = [
+            'user_id' => $post->user_id,
+            'title' => $post->title,
+            'content' => $post->content,
+            'book_id' => $post->book_id,
+            'movie_id' => $post->movie_id,
+            'createdAt' => $post->createdAt
+        ];
+    }
+    return $response->withStatus(200) -> withJson($payload);
+});
+
+//GET a post info using the post_id
+$app->get("/posts/{id}", function (Request $request, Response $response, array $args){
+    $id = $args['id'];
+
+    $post = new Post();
+    $_post = $post->find($id);
+
+    $payload[$_post->post_id] = [
+        'user_id' => $_post->user_id,
+        'title' => $_post->title,
+        'content' => $_post->content,
+        'book_id' => $_post->book_id,
+        'movie_id' => $_post->movie_id,
+        'createdAt' => $_post->createdAt
+    ];
+
+    return $response->withStatus(200)->withJson($payload);
+});
 
 //TODO: COMMENTS TABLE RELATED ENDPOINTS
+
+//GET all comments
+$app->get("/comments", function (Request $request, Response $response, array $args){
+    $comments = comment::all();
+
+    $payload = [];
+
+    foreach ($comments as $comment){
+        $payload[$comment->comment_id] = [
+            'post_id' => $comment->post_id,
+            'user_id' => $comment->user_id,
+            'content' => $comment->content,
+            'createdAt' => $comment->createdAt
+        ];
+    }
+    return $response->withStatus(200) -> withJson($payload);
+});
+
+
+//GET a comment info using the comment_id
+$app->get("/comments/{id}", function (Request $request, Response $response, array $args){
+    $id = $args['id'];
+
+    $comment = new Comment();
+    $_comment = $comment->find($id);
+
+    $payload[$_comment->comment_id] = [
+        'post_id' => $_comment->post_id,
+        'user_id' => $_comment->user_id,
+        'content' => $_comment->content,
+        'createdAt' => $_comment->createdAt
+    ];
+
+    return $response->withStatus(200)->withJson($payload);
+});
 
 
 $app->run();
