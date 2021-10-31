@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="seeing if you can see this">
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="This Commit adds the get method for all movies as well as for single movies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +35,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -39,8 +56,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/vendor/respect/stringifier" />
-      <path value="$PROJECT_DIR$/vendor/respect/validation" />
     </include_path>
   </component>
   <component name="ProjectId" id="2012lcrWQ2i5LwfNQe5mQp0hQkX" />
@@ -65,10 +80,6 @@
       <option name="presentableId" value="Default" />
       <updated>1635197924988</updated>
       <workItem from="1635197926186" duration="3548000" />
-      <workItem from="1635445410442" duration="3811000" />
-      <workItem from="1635465395515" duration="48000" />
-      <workItem from="1635465447689" duration="471000" />
-      <workItem from="1635465932968" duration="76000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -77,52 +88,56 @@
       <option name="project" value="LOCAL" />
       <updated>1635201847455</updated>
     </task>
-    <task id="LOCAL-00002" summary="seeing if you can see this">
-      <created>1635463780240</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1635463780240</updated>
-    </task>
-    <task id="LOCAL-00003" summary="seeing if you can see this">
-      <created>1635465736344</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1635465736344</updated>
-    </task>
-    <task id="LOCAL-00004" summary="seeing if you can see this">
-      <created>1635465834324</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1635465834324</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="This Commit adds the get method for all movies as well as for single movies" />
-    <MESSAGE value="seeing if you can see this" />
-    <option name="LAST_COMMIT_MESSAGE" value="seeing if you can see this" />
+    <option name="LAST_COMMIT_MESSAGE" value="This Commit adds the get method for all movies as well as for single movies" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/bootstrap.php</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/bootstrap.php</url>
-          <line>26</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="WindowStateProjectService">
+    <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey" timestamp="1635198378320">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635198378320" />
+    <state x="828" y="441" key="Github.ShareDialog" timestamp="1635201177151">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="828" y="441" key="Github.ShareDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201177151" />
+    <state x="716" y="249" key="Github.UntrackedFilesDialog" timestamp="1635201212655">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="716" y="249" key="Github.UntrackedFilesDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201212655" />
+    <state x="628" y="270" key="NewPhpClassDialog" timestamp="1635201474375">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="628" y="270" key="NewPhpClassDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201474375" />
+    <state x="781" y="467" key="NewPhpFileDialog" timestamp="1635199774275">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="781" y="467" key="NewPhpFileDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635199774275" />
+    <state x="469" y="176" key="SettingsEditor" timestamp="1635201141136">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2" timestamp="1635201859452">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201236479" />
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.61.1920.1055/0.0.1920.1080@0.0.1920.1080" timestamp="1635201859452" />
   </component>
 </project>

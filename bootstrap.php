@@ -22,6 +22,7 @@ $capsule->addConnection([
     "driver" => "mysql",
     "host" => $db_host,
     "database" => $db_name,
+    //"port"=>3307,
     "username" => $db_username,
     "password" => $db_password,
     "chartset" =>  "utf8",
