@@ -17,7 +17,7 @@ use Thoughts\Models\User;
 use Thoughts\Models\Post;
 use Thoughts\Models\Comment;
 
-//TODO: Home Page
+
 //Shows the message "Hello, this is the homepage".
 $app->get('/', function($request, $response, $args){
     return $response->write("Hello, this is the homepage.");
@@ -30,7 +30,7 @@ $app -> get('/hello/{name}', function ($request, $response, $args){
 }
 );
 
-//TODO: BOOK TABLE RELATED ENDPOINTS
+
 //GET all books
 $app->get("/books", function (Request $request, Response $response, array $args){
     $books = Book::all();
@@ -67,7 +67,7 @@ $app->get("/books/{id}", function (Request $request, Response $response, array $
     return $response->withStatus(200)->withJson($payload);
 });
 
-//TODO: Movie Table Related Endpoints
+
 //GET all movies
 $app->get("/movies", function (Request $request, Response $response, array $args){
     $movies = Movie::all();
@@ -102,7 +102,7 @@ $app->get("/movies/{id}", function (Request $request, Response $response, array 
     return $response->withStatus(200)->withJson($payload);
 });
 
-//TODO: USER TABLE RELATED ENDPOINTS
+
 //GET all users
 $app->get("/users", function (Request $request, Response $response, array $args){
     $users = user::all();
@@ -139,7 +139,6 @@ $app->get("/users/{id}", function (Request $request, Response $response, array $
     return $response->withStatus(200)->withJson($payload);
 });
 
-//TODO: POSTS TABLE RELATED ENDPOINTS
 //GET all posts
 $app->get("/posts", function (Request $request, Response $response, array $args){
     $posts = post::all();
@@ -178,7 +177,6 @@ $app->get("/posts/{id}", function (Request $request, Response $response, array $
     return $response->withStatus(200)->withJson($payload);
 });
 
-//TODO: COMMENTS TABLE RELATED ENDPOINTS
 
 //GET all comments
 $app->get("/comments", function (Request $request, Response $response, array $args){
@@ -214,6 +212,27 @@ $app->get("/comments/{id}", function (Request $request, Response $response, arra
 
     return $response->withStatus(200)->withJson($payload);
 });
+//retrieve all comments replying a specific post
+$app -> get('/posts/{id}/comments', function(Request $request, Response $response, array $args){
+    $id = $args['id'];
+    $post = new Post();
+    $comments = $post->find($id) -> comments;
+
+    $payload = [];
+
+    foreach($comments as $comment){
+        $payload[$comment->id] = [
+            'post_id' => $comment -> post_id,
+            'user_id' => $comment -> user_id,
+            'body' => $comment -> body,
+            'created_at' => $comment -> created_at
+        ];
+    }
+    return $response->withStatus(200)->withJson($payload);
+});
+//TODO: get all comments made by a user
+//TODO: get all post associated with a book
+//TODO: get all post associated with a movie
 
 
 $app->run();
