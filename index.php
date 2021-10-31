@@ -93,10 +93,10 @@ $app->get("/movies/{id}", function (Request $request, Response $response, array 
     $_movie = $movie->find($id);
 
     $payload[$_movie->movie_id] = [
-        'movieTitle' => $movie->movieTitle,
-        'movieDirector' => $movie->movieDirector,
-        'movieReleaseDate' => $movie->movieReleaseDate,
-        'movieCoverImage' => $movie->movieCoverImage
+        'movieTitle' => $_movie->movieTitle,
+        'movieDirector' => $_movie->movieDirector,
+        'movieReleaseDate' => $_movie->movieReleaseDate,
+        'movieCoverImage' => $_movie->movieCoverImage
     ];
 
     return $response->withStatus(200)->withJson($payload);

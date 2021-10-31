@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="This commit adds endpoints for Users,Posts,and Comments.">
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="This Commit adds the get method for all movies as well as for single movies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +80,6 @@
       <option name="presentableId" value="Default" />
       <updated>1635197924988</updated>
       <workItem from="1635197926186" duration="3548000" />
-      <workItem from="1635537768113" duration="415000" />
-      <workItem from="1635692639349" duration="3864000" />
-      <workItem from="1635696669755" duration="218000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -78,28 +88,7 @@
       <option name="project" value="LOCAL" />
       <updated>1635201847455</updated>
     </task>
-    <task id="LOCAL-00002" summary="This commit fixes the files that were messed up.">
-      <created>1635537964604</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1635537964604</updated>
-    </task>
-    <task id="LOCAL-00003" summary="This commit fixes the files that were messed up.">
-      <created>1635538064574</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1635538064574</updated>
-    </task>
-    <task id="LOCAL-00004" summary="This commit adds endpoints for Users,Posts,and Comments.">
-      <created>1635695608238</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1635695608238</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,12 +104,40 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="This Commit adds the get method for all movies as well as for single movies" />
-    <MESSAGE value="This commit fixes the files that were messed up." />
-    <MESSAGE value="This commit adds endpoints for Users,Posts,and Comments." />
-    <option name="LAST_COMMIT_MESSAGE" value="This commit adds endpoints for Users,Posts,and Comments." />
+    <option name="LAST_COMMIT_MESSAGE" value="This Commit adds the get method for all movies as well as for single movies" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey" timestamp="1635198378320">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635198378320" />
+    <state x="828" y="441" key="Github.ShareDialog" timestamp="1635201177151">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="828" y="441" key="Github.ShareDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201177151" />
+    <state x="716" y="249" key="Github.UntrackedFilesDialog" timestamp="1635201212655">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="716" y="249" key="Github.UntrackedFilesDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201212655" />
+    <state x="628" y="270" key="NewPhpClassDialog" timestamp="1635201474375">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="628" y="270" key="NewPhpClassDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201474375" />
+    <state x="781" y="467" key="NewPhpFileDialog" timestamp="1635199774275">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="781" y="467" key="NewPhpFileDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635199774275" />
+    <state x="469" y="176" key="SettingsEditor" timestamp="1635201141136">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2" timestamp="1635201859452">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201236479" />
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.61.1920.1055/0.0.1920.1080@0.0.1920.1080" timestamp="1635201859452" />
   </component>
 </project>
