@@ -16,4 +16,8 @@ class Book extends Model {
     protected $table = 'books';
     protected $primaryKey = 'book_id';
 
+    //map the one-to-many relationship
+    public function posts (){
+        return $this->hasMany(Post::class, 'book_id');
+    }
 }
