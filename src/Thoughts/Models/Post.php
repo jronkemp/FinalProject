@@ -22,4 +22,9 @@ class Post extends Model{
     public function movies (){
         return $this->belongsTo(Movie::class, 'movie_id');
     }
+
+    //map the one-to-many relationship
+    public function user (){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -154,6 +154,7 @@ $app->get("/posts", function (Request $request, Response $response, array $args)
 
 //GET a post info using the post_id
 $app->get("/posts/{id}", function (Request $request, Response $response, array $args){
+
     $id = $args['id'];
 
     $post = new Post();
@@ -174,7 +175,8 @@ $app->get("/posts/{id}", function (Request $request, Response $response, array $
 
 //GET all comments
 $app->get("/comments", function (Request $request, Response $response, array $args){
-    $comments = comment::all();
+
+    $comments = Comment::all();
 
     $payload = [];
 
@@ -192,8 +194,8 @@ $app->get("/comments", function (Request $request, Response $response, array $ar
 
 //GET a comment info using the comment_id
 $app->get("/comments/{id}", function (Request $request, Response $response, array $args){
-    $id = $args['id'];
 
+    $id = $args['id'];
     $comment = new Comment();
     $_comment = $comment->find($id);
 
@@ -243,6 +245,29 @@ $app -> get('/users/{id}/comments', function(Request $request, Response $respons
             'user_id' => $comment -> user_id,
             'content' => $comment -> content,
             'createdAt' => $comment -> createdAt
+        ];
+    }
+    return $response->withStatus(200)->withJson($payload);
+});
+
+//get all posts
+// made by a user
+$app -> get('/users/{id}/posts', function(Request $request, Response $response, array $args){
+
+    $id = $args['id'];
+    $user = new User();
+    $posts = $user->find($id) -> posts;
+
+    $payload = [];
+
+    foreach ($posts as $post){
+        $payload[$post->post_id] = [
+            'user_id' => $post->user_id,
+            'title' => $post->title,
+            'content' => $post->content,
+            'book_id' => $post->book_id,
+            'movie_id' => $post->movie_id,
+            'createdAt' => $post->createdAt
         ];
     }
     return $response->withStatus(200)->withJson($payload);
