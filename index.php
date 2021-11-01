@@ -231,8 +231,56 @@ $app -> get('/posts/{id}/comments', function(Request $request, Response $respons
     return $response->withStatus(200)->withJson($payload);
 });
 //TODO: get all comments made by a user
-//TODO: get all post associated with a book
-//TODO: get all post associated with a movie
+$app -> get('/users{id}', function(Request $request, Response $response, array $args){
+    $id = $args['id'];
+    $comments = $user->find($id) -> comments;
 
+    $payload = [];
+
+    foreach($comments as $comment){
+        $payload[$comment->id] = [
+            'post_id' => $comment -> post_id,
+            'user_id' => $comment -> user_id,
+            'body' => $comment -> body,
+            'created_at' => $comment -> created_at
+        ];
+    }
+    return $response->withStatus(200)->withJson($payload);
+});
+//TODO: get all post associated with a book
+$app -> get('/books{id}', function(Request $request, Response $response, array $args){
+    $id = $args['id'];
+    $posts = $book->find($id) -> posts;
+
+    $payload = [];
+
+    foreach($posts as $post){
+        $payload[$post->id] = [
+            'bookTitle' => $_book->bookTitle,
+            'bookAuthor' => $_book->bookAuthor,
+            'bookISBN' => $_book->bookISBN,
+            'bookReleaseDate' => $_book->bookReleaseDate,
+            'bookCoverImage' => $_book->bookCoverImage
+        ];
+    }
+    return $response->withStatus(200)->withJson($payload);
+});
+//TODO: get all post associated with a movie
+$app -> get('/movies{id}', function(Request $request, Response $response, array $args){
+    $id = $args['id'];
+    $posts = $movie->find($id) -> posts;
+
+    $payload = [];
+
+    foreach($movies as $movie){
+        $payload[$post->id] = [
+            'movieTitle' => $_movie->movieTitle,
+            'movieDirector' => $_movie->movieDirector,
+            'movieReleaseDate' => $_movie->movieReleaseDate,
+            'movieCoverImage' => $_movie->movieCoverImage
+        ];
+    }
+    return $response->withStatus(200)->withJson($payload);
+});
 
 $app->run();
