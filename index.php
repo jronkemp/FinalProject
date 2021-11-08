@@ -23,7 +23,15 @@ $app->get('/', function($request, $response, $args){
     return $response->write("Hello, this is the Thoughts homepage.");
 });
 
+/* These are the endpoints that access the book related resources
 
+ * /books
+ * /books/{id}
+ * /books/{id}/posts
+ *
+ * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ *
+ * */
 
 //GET all books
 $app->get("/books", function (Request $request, Response $response, array $args){
@@ -84,6 +92,16 @@ $app -> get('/books/{id}/posts', function(Request $request, Response $response, 
 });
 
 
+/* These are the endpoints that access the movie related resources
+
+ * /movies
+ * /movies/{id}
+ * /movies/{id}/posts
+ *
+ * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ *
+ * */
+
 //GET all movies
 $app->get("/movies", function (Request $request, Response $response, array $args){
     $movies = Movie::all();
@@ -140,6 +158,17 @@ $app -> get('/movies/{id}/posts', function(Request $request, Response $response,
     return $response->withStatus(200)->withJson($payload);
 });
 
+
+/* These are the endpoints that access the user related resources
+
+ * /users
+ * /users/{id}
+ * /users/{id}/posts
+ * /users/{id}/comments
+ *
+ * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ *
+ * */
 
 //GET all users
 $app->get("/users", function (Request $request, Response $response, array $args){
@@ -220,6 +249,16 @@ $app -> get('/users/{id}/posts', function(Request $request, Response $response, 
 });
 
 
+/* These are the endpoints that access the post related resources
+
+ * /posts
+ * /posts/{id}
+ * /posts/{id}/comments
+ *
+ * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ *
+ * */
+
 //GET all posts
 $app->get("/posts", function (Request $request, Response $response, array $args){
     $posts = post::all();
@@ -279,6 +318,15 @@ $app -> get('/posts/{id}/comments', function(Request $request, Response $respons
     return $response->withStatus(200)->withJson($payload);
 });
 
+
+/* These are the endpoints that access the comment related resources
+
+ * /comment
+ * /comment/{id}
+ *
+ * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ *
+ * */
 
 //GET all comments
 $app->get("/comments", function (Request $request, Response $response, array $args){
