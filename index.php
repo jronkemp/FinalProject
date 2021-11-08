@@ -20,7 +20,7 @@ use Thoughts\Models\Comment;
 
 //Shows the message "Hello, this is the homepage".
 $app->get('/', function($request, $response, $args){
-    return $response->write("Hello, this is the homepage.");
+    return $response->write("Hello, this is the Thoughts homepage.");
 });
 
 
@@ -61,6 +61,28 @@ $app->get("/books/{id}", function (Request $request, Response $response, array $
     return $response->withStatus(200)->withJson($payload);
 });
 
+//get all posts associated with a book
+$app -> get('/books/{id}/posts', function(Request $request, Response $response, array $args){
+
+    $id = $args['id'];
+    $book = new Book();
+    $posts = $book->find($id) -> posts;
+
+    $payload = [];
+
+    foreach ($posts as $post){
+        $payload[$post->post_id] = [
+            'user_id' => $post->user_id,
+            'title' => $post->title,
+            'content' => $post->content,
+            'book_id' => $post->book_id,
+            'movie_id' => $post->movie_id,
+            'createdAt' => $post->createdAt
+        ];
+    }
+    return $response->withStatus(200)->withJson($payload);
+});
+
 
 //GET all movies
 $app->get("/movies", function (Request $request, Response $response, array $args){
@@ -93,6 +115,28 @@ $app->get("/movies/{id}", function (Request $request, Response $response, array 
         'movieCoverImage' => $_movie->movieCoverImage
     ];
 
+    return $response->withStatus(200)->withJson($payload);
+});
+
+// get all posts associated with a movie
+$app -> get('/movies/{id}/posts', function(Request $request, Response $response, array $args){
+
+    $id = $args['id'];
+    $movie = new Movie();
+    $posts = $movie->find($id) -> posts;
+
+    $payload = [];
+
+    foreach ($posts as $post){
+        $payload[$post->post_id] = [
+            'user_id' => $post->user_id,
+            'title' => $post->title,
+            'content' => $post->content,
+            'book_id' => $post->book_id,
+            'movie_id' => $post->movie_id,
+            'createdAt' => $post->createdAt
+        ];
+    }
     return $response->withStatus(200)->withJson($payload);
 });
 
@@ -133,6 +177,49 @@ $app->get("/users/{id}", function (Request $request, Response $response, array $
     return $response->withStatus(200)->withJson($payload);
 });
 
+//get all comments made by a user
+$app -> get('/users/{id}/comments', function(Request $request, Response $response, array $args){
+
+    $id = $args['id'];
+    $user = new User();
+    $comments = $user->find($id) -> comments;
+
+    $payload = [];
+
+    foreach($comments as $comment){
+        $payload[$comment->comment_id] = [
+            'post_id' => $comment -> post_id,
+            'user_id' => $comment -> user_id,
+            'content' => $comment -> content,
+            'createdAt' => $comment -> createdAt
+        ];
+    }
+    return $response->withStatus(200)->withJson($payload);
+});
+
+//get all posts made by a user
+$app -> get('/users/{id}/posts', function(Request $request, Response $response, array $args){
+
+    $id = $args['id'];
+    $user = new User();
+    $posts = $user->find($id) -> posts;
+
+    $payload = [];
+
+    foreach ($posts as $post){
+        $payload[$post->post_id] = [
+            'user_id' => $post->user_id,
+            'title' => $post->title,
+            'content' => $post->content,
+            'book_id' => $post->book_id,
+            'movie_id' => $post->movie_id,
+            'createdAt' => $post->createdAt
+        ];
+    }
+    return $response->withStatus(200)->withJson($payload);
+});
+
+
 //GET all posts
 $app->get("/posts", function (Request $request, Response $response, array $args){
     $posts = post::all();
@@ -169,6 +256,26 @@ $app->get("/posts/{id}", function (Request $request, Response $response, array $
         'createdAt' => $_post->createdAt
     ];
 
+    return $response->withStatus(200)->withJson($payload);
+});
+
+//retrieve all comments replying to a specific post
+$app -> get('/posts/{id}/comments', function(Request $request, Response $response, array $args){
+
+    $id = $args['id'];
+    $post = new Post();
+    $comments = $post->find($id) -> comments;
+
+    $payload = [];
+
+    foreach($comments as $comment){
+        $payload[$comment->comment_id] = [
+            'post_id' => $comment -> post_id,
+            'user_id' => $comment -> user_id,
+            'content' => $comment -> content,
+            'createdAt' => $comment -> createdAt
+        ];
+    }
     return $response->withStatus(200)->withJson($payload);
 });
 
@@ -209,112 +316,5 @@ $app->get("/comments/{id}", function (Request $request, Response $response, arra
     return $response->withStatus(200)->withJson($payload);
 });
 
-
-//retrieve all comments replying to a specific post
-$app -> get('/posts/{id}/comments', function(Request $request, Response $response, array $args){
-
-    $id = $args['id'];
-    $post = new Post();
-    $comments = $post->find($id) -> comments;
-
-    $payload = [];
-
-    foreach($comments as $comment){
-        $payload[$comment->comment_id] = [
-            'post_id' => $comment -> post_id,
-            'user_id' => $comment -> user_id,
-            'content' => $comment -> content,
-            'createdAt' => $comment -> createdAt
-        ];
-    }
-    return $response->withStatus(200)->withJson($payload);
-});
-
-//get all comments made by a user
-$app -> get('/users/{id}/comments', function(Request $request, Response $response, array $args){
-
-    $id = $args['id'];
-    $user = new User();
-    $comments = $user->find($id) -> comments;
-
-    $payload = [];
-
-    foreach($comments as $comment){
-        $payload[$comment->comment_id] = [
-            'post_id' => $comment -> post_id,
-            'user_id' => $comment -> user_id,
-            'content' => $comment -> content,
-            'createdAt' => $comment -> createdAt
-        ];
-    }
-    return $response->withStatus(200)->withJson($payload);
-});
-
-//get all posts
-// made by a user
-$app -> get('/users/{id}/posts', function(Request $request, Response $response, array $args){
-
-    $id = $args['id'];
-    $user = new User();
-    $posts = $user->find($id) -> posts;
-
-    $payload = [];
-
-    foreach ($posts as $post){
-        $payload[$post->post_id] = [
-            'user_id' => $post->user_id,
-            'title' => $post->title,
-            'content' => $post->content,
-            'book_id' => $post->book_id,
-            'movie_id' => $post->movie_id,
-            'createdAt' => $post->createdAt
-        ];
-    }
-    return $response->withStatus(200)->withJson($payload);
-});
-
-//get all posts associated with a book
-$app -> get('/books/{id}/posts', function(Request $request, Response $response, array $args){
-
-    $id = $args['id'];
-    $book = new Book();
-    $posts = $book->find($id) -> posts;
-
-    $payload = [];
-
-    foreach ($posts as $post){
-        $payload[$post->post_id] = [
-            'user_id' => $post->user_id,
-            'title' => $post->title,
-            'content' => $post->content,
-            'book_id' => $post->book_id,
-            'movie_id' => $post->movie_id,
-            'createdAt' => $post->createdAt
-        ];
-    }
-    return $response->withStatus(200)->withJson($payload);
-});
-
-// get all posts associated with a movie
-$app -> get('/movies/{id}/posts', function(Request $request, Response $response, array $args){
-
-    $id = $args['id'];
-    $movie = new Movie();
-    $posts = $movie->find($id) -> posts;
-
-    $payload = [];
-
-    foreach ($posts as $post){
-        $payload[$post->post_id] = [
-            'user_id' => $post->user_id,
-            'title' => $post->title,
-            'content' => $post->content,
-            'book_id' => $post->book_id,
-            'movie_id' => $post->movie_id,
-            'createdAt' => $post->createdAt
-        ];
-    }
-    return $response->withStatus(200)->withJson($payload);
-});
 
 $app->run();
