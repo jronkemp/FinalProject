@@ -29,26 +29,87 @@ $app->get('/', function($request, $response, $args){
  * /books/{id}
  * /books/{id}/posts
  *
- * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ * TODO: Add CRUD related functions, fix empty payload error for search
  *
  * */
 
+
 //GET all books
 $app->get("/books", function (Request $request, Response $response, array $args){
-    $books = Book::all();
 
-    $payload = [];
+    //Get the total number of books
+    $count = Book::count();
 
-    foreach ($books as $book){
-        $payload[$book->book_id] = [
-            'bookTitle' => $book->bookTitle,
-            'bookAuthor' => $book->bookAuthor,
-            'bookISBN' => $book->bookISBN,
-            'bookReleaseDate' => $book->bookReleaseDate,
-            'bookCoverImage' => $book->bookCoverImage
+    //Get querystring variable from url
+    $params = $request->getQueryParams();
+
+    //Do limit and offset exist?
+    $limit = array_key_exists('limit', $params) ? (int)$params['limit'] : 3;//items per page
+
+    $offset = array_key_exists('offset', $params) ? (int)$params['offset'] : 0;// offset of the first item
+
+    //Get search terms
+    $term = array_key_exists('q', $params) ? $params['q'] : null;
+
+    if (!is_null($term)) {
+
+        $books = Book::searchBooks($term);
+        $payload_final = [];
+
+        foreach ($books as $book) {
+            $payload[$book->book_id] = [
+                'bookTitle' => $book->bookTitle,
+                'bookAuthor' => $book->bookAuthor,
+                'bookISBN' => $book->bookISBN,
+                'bookReleaseDate' => $book->bookReleaseDate,
+                'bookCoverImage' => $book->bookCoverImage
+            ];
+        }
+    } else {
+
+        //Pagination
+        $links = Book::getLinks($request, $limit, $offset);
+
+        // sort the books based on parameters
+        $sort_key_array = Book::getSortKeys($request);
+        $query = Book::with('posts');
+
+        $query = $query->skip($offset)->take($limit);  // limit the rows
+
+        // sort the output by one or more columns
+        foreach ($sort_key_array as $column => $direction) {
+
+            $query->orderBy($column, $direction);
+
+        }
+
+        $books = $query->get();
+        $payload = [];
+
+        foreach ($books as $book) {
+            $payload[$book->book_id] = [
+                'bookTitle' => $book->bookTitle,
+                'bookAuthor' => $book->bookAuthor,
+                'bookISBN' => $book->bookISBN,
+                'bookReleaseDate' => $book->bookReleaseDate,
+                'bookCoverImage' => $book->bookCoverImage
+            ];
+        }
+
+        $payload_final = [
+            'totalCount' => $count,
+            'limit' => $limit,
+            'offset' => $offset,
+            'links' => $links,
+            'sort' => $sort_key_array,
+            'data' => $payload
         ];
+
     }
-    return $response->withStatus(200) -> withJson($payload);
+
+    //return a success code with the payload
+    return $response->withStatus(200)->withJson($payload_final);
+
 });
 
 //GET a books info using the book_id
@@ -98,28 +159,86 @@ $app -> get('/books/{id}/posts', function(Request $request, Response $response, 
  * /movies/{id}
  * /movies/{id}/posts
  *
- * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ * TODO: Add CRUD related functions, fix empty payload error for search
  *
  * */
 
 //GET all movies
 $app->get("/movies", function (Request $request, Response $response, array $args){
-    $movies = Movie::all();
+    //Get the total number of movies
+    $count = Movie::count();
 
-    $payload = [];
+    //Get querystring variable from url
+    $params = $request->getQueryParams();
 
-    foreach ($movies as $movie){
-        $payload[$movie->movie_id] = [
-            'movieTitle' => $movie->movieTitle,
-            'movieDirector' => $movie->movieDirector,
-            'movieReleaseDate' => $movie->movieReleaseDate,
-            'movieCoverImage' => $movie->movieCoverImage
+    //Do limit and offset exist?
+    $limit = array_key_exists('limit', $params) ? (int)$params['limit'] : 3;//items per page
+
+    $offset = array_key_exists('offset', $params) ? (int)$params['offset'] : 0;// offset of the first item
+
+    //Get search terms
+    $term = array_key_exists('q', $params) ? $params['q'] : null;
+
+    if (!is_null($term)) {
+
+        $movies = Movie::searchMovies($term);
+        $payload_final = [];
+
+        foreach ($movies as $movie){
+            $payload[$movie->movie_id] = [
+                'movieTitle' => $movie->movieTitle,
+                'movieDirector' => $movie->movieDirector,
+                'movieReleaseDate' => $movie->movieReleaseDate,
+                'movieCoverImage' => $movie->movieCoverImage
+            ];
+        }
+    } else {
+
+        //Pagination
+        $links = Movie::getLinks($request, $limit, $offset);
+
+        // sorting mechanics for the movies
+        $sort_key_array = Movie::getSortKeys($request);
+        $query = Movie::with('posts');
+
+        $query = $query->skip($offset)->take($limit);  // limit the rows
+
+        // sort the output by one or more columns
+        foreach ($sort_key_array as $column => $direction) {
+
+            $query->orderBy($column, $direction);
+
+        }
+
+        $movies = $query->get();
+        $payload = [];
+
+        foreach ($movies as $movie){
+            $payload[$movie->movie_id] = [
+                'movieTitle' => $movie->movieTitle,
+                'movieDirector' => $movie->movieDirector,
+                'movieReleaseDate' => $movie->movieReleaseDate,
+                'movieCoverImage' => $movie->movieCoverImage
+            ];
+        }
+
+        $payload_final = [
+            'totalCount' => $count,
+            'limit' => $limit,
+            'offset' => $offset,
+            'links' => $links,
+            'sort' => $sort_key_array,
+            'data' => $payload
         ];
+
     }
-    return $response->withStatus(200) -> withJson($payload);
+
+    //return a successful code with the payload
+    return $response->withStatus(200)->withJson($payload_final);
+
 });
 
-//GET a movies info using the user_id
+//GET a movies info using the movie_id
 $app->get("/movies/{id}", function (Request $request, Response $response, array $args){
     $id = $args['id'];
 
@@ -166,26 +285,84 @@ $app -> get('/movies/{id}/posts', function(Request $request, Response $response,
  * /users/{id}/posts
  * /users/{id}/comments
  *
- * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ * TODO: fix empty payload error for search function
  *
  * */
 
 //GET all users
 $app->get("/users", function (Request $request, Response $response, array $args){
-    $users = User::all();
+    //Get the total number of users
+    $count = User::count();
 
-    $payload = [];
+    //Get querystring variable from url
+    $params = $request->getQueryParams();
 
-    foreach ($users as $user){
-        $payload[$user->user_id] = [
-            'firstname' => $user->firstname,
-            'lastname' => $user->lastname,
-            'email' => $user->email,
-            'username' => $user->username,
-            'password'=>$user->password
+    //Do limit and offset exist?
+    $limit = array_key_exists('limit', $params) ? (int)$params['limit'] : 3;//items per page
+
+    $offset = array_key_exists('offset', $params) ? (int)$params['offset'] : 0;// offset of the first item
+
+    //Get search terms
+    $term = array_key_exists('q', $params) ? $params['q'] : null;
+
+    if (!is_null($term)) {
+
+        $users = User::searchUsers($term);
+        $payload_final = [];
+
+        foreach ($users as $user){
+            $payload[$user->user_id] = [
+                'firstname' => $user->firstname,
+                'lastname' => $user->lastname,
+                'email' => $user->email,
+                'username' => $user->username,
+                'password'=>$user->password
+            ];
+        }
+    } else {
+
+        //Pagination
+        $links = User::getLinks($request, $limit, $offset);
+
+        // sorting for the users
+        $sort_key_array = User::getSortKeys($request);
+        $query = User::with('posts');
+
+        $query = $query->skip($offset)->take($limit);  // limit the rows
+
+        // sort the output by one or more columns
+        foreach ($sort_key_array as $column => $direction) {
+
+            $query->orderBy($column, $direction);
+
+        }
+
+        $users = $query->get();
+        $payload = [];
+
+        foreach ($users as $user){
+            $payload[$user->user_id] = [
+                'firstname' => $user->firstname,
+                'lastname' => $user->lastname,
+                'email' => $user->email,
+                'username' => $user->username,
+                'password'=>$user->password
+            ];
+        }
+
+        $payload_final = [
+            'totalCount' => $count,
+            'limit' => $limit,
+            'offset' => $offset,
+            'links' => $links,
+            'sort' => $sort_key_array,
+            'data' => $payload
         ];
+
     }
-    return $response->withStatus(200) -> withJson($payload);
+
+    //return the payload with a successful code fo 200
+    return $response->withStatus(200)->withJson($payload_final);
 });
 
 //GET a users info using the user_id
@@ -248,6 +425,91 @@ $app -> get('/users/{id}/posts', function(Request $request, Response $response, 
     return $response->withStatus(200)->withJson($payload);
 });
 
+//create a new user using post method
+$app->post('/users', function ($request, $response, $args) {
+
+    $user = new User();
+
+    $firstname = $request->getParsedBodyParam('firstname');
+    $lastname = $request->getParsedBodyParam('lastname','');
+    $email = $request->getParsedBodyParam('email','');
+    $username = $request->getParsedBodyParam('username');
+    $password = $request->getParsedBodyParam('password');
+
+    $user->firstname = $firstname;
+    $user->lastname = $lastname;
+    $user->email = $email;
+    $user->username = $username;
+    $user->password = $password;
+
+    $user->save();
+
+    if ($user->firstname && $user->username && $user->password) {
+        $payload = [
+            'user_id' => $user->user_id,
+            'user_uri' => '/users/' . $user->user_id
+        ];
+
+        return $response->withStatus(201)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
+
+});
+
+//delete a user using delete method
+$app->delete('/users/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $user = User::find($id);
+    $user->delete();
+
+    if ($user->exists) {
+
+        return $response->withStatus(500);
+
+    } else {
+
+        return $response->withStatus(204)->getBody()->write("User '/user/$id' has been deleted.");
+
+    }
+});
+
+//update a current users information using patch method
+$app->patch('/users/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $user = User::findOrFail($id);
+    $params = $request->getParsedBody();
+
+    foreach ($params as $field => $value) {
+        $user->$field = $value;
+    }
+
+    $user->save();
+
+    if ($user->user_id) {
+        $payload = [
+            'user_id' => $user->user_id,
+            'firstname' => $user->firstname,
+            'lastname' => $user->lastname,
+            'email' => $user->email,
+            'username' => $user->username,
+            'password'=>$user->password,
+            'user_uri' => '/users/' . $user->user_id
+        ];
+
+        return $response->withStatus(200)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
+});
 
 /* These are the endpoints that access the post related resources
 
@@ -255,7 +517,7 @@ $app -> get('/users/{id}/posts', function(Request $request, Response $response, 
  * /posts/{id}
  * /posts/{id}/comments
  *
- * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ * TODO: Add search, sort, and paginate functions
  *
  * */
 
@@ -316,6 +578,94 @@ $app -> get('/posts/{id}/comments', function(Request $request, Response $respons
         ];
     }
     return $response->withStatus(200)->withJson($payload);
+});
+
+//create a new post using post method
+$app->post('/posts', function ($request, $response, $args) {
+
+    $post = new Post();
+
+    $user_id = $request->getParsedBodyParam('user_id','');
+    $title = $request->getParsedBodyParam('title');
+    $content = $request->getParsedBodyParam('content');
+    $book_id = $request->getParsedBodyParam('book_id', null);
+    $movie_id = $request->getParsedBodyParam('movie_id',null);
+
+
+    $post->user_id = $user_id;
+    $post->title = $title;
+    $post->content = $content;
+    $post->book_id = $book_id;
+    $post->movie_id = $movie_id;
+
+    $post->save();
+
+    if ($post->title && $post->content) {
+        $payload = [
+            'post_id' => $post->post_id,
+            'post_uri' => '/users/' . $post->post_id
+        ];
+
+        return $response->withStatus(201)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
+
+});
+
+//delete a post using delete method
+$app->delete('/posts/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $post = Post::find($id);
+    $post->delete();
+
+    if ($post->exists) {
+
+        return $response->withStatus(500);
+
+    } else {
+
+        return $response->withStatus(204)->getBody()->write("Post '/posts/$id' has been deleted.");
+
+    }
+});
+
+//update a current posts information using patch method
+$app->patch('/posts/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $post = Post::findOrFail($id);
+    $params = $request->getParsedBody();
+
+    foreach ($params as $field => $value) {
+        $post->$field = $value;
+    }
+
+    $post->save();
+
+    if ($post->post_id) {
+        $payload = [
+            'user_id' => $post->user_id,
+            'title' => $post->title,
+            'content' => $post->content,
+            'book_id' => $post->book_id,
+            'movie_id' => $post->movie_id,
+            'created_at' => $post->created_at,
+            'updated_at' => $post->updated_at,
+            'post_uri' => '/posts/' . $post->post_id
+        ];
+
+        return $response->withStatus(200)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
 });
 
 
