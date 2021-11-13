@@ -19,12 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="further updating organization and structure of index.php&#10;(adding todo's for each section)">
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="Aparatically adding CRUD functions as well as search sort and paginate features. Future commit will include more complete implementation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Movie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Movie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +84,7 @@
       <updated>1635197924988</updated>
       <workItem from="1635197926186" duration="3548000" />
       <workItem from="1635975939299" duration="1288000" />
-      <workItem from="1636338593031" duration="10757000" />
+      <workItem from="1636338593031" duration="14589000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -129,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636398344816</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Aparatically adding CRUD functions as well as search sort and paginate features. Future commit will include more complete implementation.">
+      <created>1636751294245</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636751294246</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,13 +160,14 @@
     <MESSAGE value="Adding user/id/posts endpoint and updated classed" />
     <MESSAGE value="Updating organization and structure of index.php" />
     <MESSAGE value="further updating organization and structure of index.php&#10;(adding todo's for each section)" />
-    <option name="LAST_COMMIT_MESSAGE" value="further updating organization and structure of index.php&#10;(adding todo's for each section)" />
+    <MESSAGE value="Aparatically adding CRUD functions as well as search sort and paginate features. Future commit will include more complete implementation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Aparatically adding CRUD functions as well as search sort and paginate features. Future commit will include more complete implementation." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1636747702236">
+    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1636761929153">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1636747702236" />
+    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1636761929153" />
     <state x="698" y="299" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1635735381935">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -189,12 +196,12 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
-    <state x="420" y="231" key="Vcs.Push.Dialog.v2" timestamp="1636398346757">
+    <state x="420" y="231" key="Vcs.Push.Dialog.v2" timestamp="1636751295998">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635697707365" />
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.61.1920.1055/0.0.1920.1080@0.0.1920.1080" timestamp="1635201859452" />
-    <state x="420" y="231" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1636398346757" />
+    <state x="420" y="231" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1636751295998" />
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1635736900147" />
     <state x="766" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1636690767974">
       <screen x="0" y="0" width="1920" height="1080" />

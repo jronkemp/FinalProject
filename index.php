@@ -29,7 +29,7 @@ $app->get('/', function($request, $response, $args){
  * /books/{id}
  * /books/{id}/posts
  *
- * TODO: Add CRUD related functions, fix empty payload error for search
+ * TODO:  fix empty payload error for search
  *
  * */
 
@@ -152,6 +152,90 @@ $app -> get('/books/{id}/posts', function(Request $request, Response $response, 
     return $response->withStatus(200)->withJson($payload);
 });
 
+//create a new movie using post method
+$app->post('/books', function ($request, $response, $args) {
+
+    $movie = new Movie();
+
+    $movieTitle = $request->getParsedBodyParam('movieTitle');
+    $movieDirector = $request->getParsedBodyParam('movieDirector', '');
+    $movieReleaseDate = $request->getParsedBodyParam('movieReleaseDate','');
+    $movieCoverImage = $request->getParsedBodyParam('movieCoverImage', null);
+
+
+    $movie->movieTitle = $movieTitle;
+    $movie->movieDirector = $movieDirector;
+    $movie->movieReleaseDate = $movieReleaseDate;
+    $movie->movieCoverImage = $movieCoverImage;
+
+
+    $movie->save();
+
+    if ($movie->movieTitle) {
+        $payload = [
+            'movie_id' => $movie->movie_id,
+            'movie_uri' => '/movies/' . $movie->movie_id
+        ];
+
+        return $response->withStatus(201)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
+
+});
+
+//delete a movie using delete method
+$app->delete('/books/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $movie = Movie::find($id);
+    $movie->delete();
+
+    if ($movie->exists) {
+
+        return $response->withStatus(500);
+
+    } else {
+
+        return $response->withStatus(204)->getBody()->write("Movie '/movies/$id' has been deleted.");
+
+    }
+});
+
+//update a current movie information using patch method
+$app->patch('/books/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $movie = Movie::findOrFail($id);
+    $params = $request->getParsedBody();
+
+    foreach ($params as $field => $value) {
+        $movie->$field = $value;
+    }
+
+    $movie->save();
+
+    if ($movie->movie_id) {
+        $payload = [
+            'movie_id' => $movie->movie_id,
+            'movieTitle' => $movie->movieTitle,
+            'movieDirector' => $movie->movieDirector,
+            'movieReleaseDate' => $movie->movieReleaseDate,
+            'movieCoverImage' => $movie->movieCoverImage,
+            'movie_uri' => '/movies/' . $movie->movie_id
+        ];
+
+        return $response->withStatus(200)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
+});
 
 /* These are the endpoints that access the movie related resources
 
@@ -159,7 +243,7 @@ $app -> get('/books/{id}/posts', function(Request $request, Response $response, 
  * /movies/{id}
  * /movies/{id}/posts
  *
- * TODO: Add CRUD related functions, fix empty payload error for search
+ * TODO:  fix empty payload error for search
  *
  * */
 
@@ -275,6 +359,91 @@ $app -> get('/movies/{id}/posts', function(Request $request, Response $response,
         ];
     }
     return $response->withStatus(200)->withJson($payload);
+});
+
+//create a new movie using post method
+$app->post('/movies', function ($request, $response, $args) {
+
+    $movie = new Movie();
+
+    $movieTitle = $request->getParsedBodyParam('movieTitle');
+    $movieDirector = $request->getParsedBodyParam('movieDirector', '');
+    $movieReleaseDate = $request->getParsedBodyParam('movieReleaseDate','');
+    $movieCoverImage = $request->getParsedBodyParam('movieCoverImage', null);
+
+
+    $movie->movieTitle = $movieTitle;
+    $movie->movieDirector = $movieDirector;
+    $movie->movieReleaseDate = $movieReleaseDate;
+    $movie->movieCoverImage = $movieCoverImage;
+
+
+    $movie->save();
+
+    if ($movie->movieTitle) {
+        $payload = [
+            'movie_id' => $movie->movie_id,
+            'movie_uri' => '/movies/' . $movie->movie_id
+        ];
+
+        return $response->withStatus(201)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
+
+});
+
+//delete a movie using delete method
+$app->delete('/movies/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $movie = Movie::find($id);
+    $movie->delete();
+
+    if ($movie->exists) {
+
+        return $response->withStatus(500);
+
+    } else {
+
+        return $response->withStatus(204)->getBody()->write("Movie '/movies/$id' has been deleted.");
+
+    }
+});
+
+//update a current movie information using patch method
+$app->patch('/movies/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $movie = Movie::findOrFail($id);
+    $params = $request->getParsedBody();
+
+    foreach ($params as $field => $value) {
+        $movie->$field = $value;
+    }
+
+    $movie->save();
+
+    if ($movie->movie_id) {
+        $payload = [
+            'movie_id' => $movie->movie_id,
+            'movieTitle' => $movie->movieTitle,
+            'movieDirector' => $movie->movieDirector,
+            'movieReleaseDate' => $movie->movieReleaseDate,
+            'movieCoverImage' => $movie->movieCoverImage,
+            'movie_uri' => '/movies/' . $movie->movie_id
+        ];
+
+        return $response->withStatus(200)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
 });
 
 
@@ -473,7 +642,7 @@ $app->delete('/users/{id}', function ($request, $response, $args) {
 
     } else {
 
-        return $response->withStatus(204)->getBody()->write("User '/user/$id' has been deleted.");
+        return $response->withStatus(204)->getBody()->write("User '/users/$id' has been deleted.");
 
     }
 });
@@ -517,27 +686,87 @@ $app->patch('/users/{id}', function ($request, $response, $args) {
  * /posts/{id}
  * /posts/{id}/comments
  *
- * TODO: Add search, sort, and paginate functions
+ * TODO: fix empty payload error with search function
  *
  * */
 
 //GET all posts
 $app->get("/posts", function (Request $request, Response $response, array $args){
-    $posts = post::all();
 
-    $payload = [];
+    //Get the total number of posts
+    $count = Post::count();
 
-    foreach ($posts as $post){
-        $payload[$post->post_id] = [
-            'user_id' => $post->user_id,
-            'title' => $post->title,
-            'content' => $post->content,
-            'book_id' => $post->book_id,
-            'movie_id' => $post->movie_id,
-            'createdAt' => $post->createdAt
+    //Get querystring variable from url
+    $params = $request->getQueryParams();
+
+    //Do limit and offset exist?
+    $limit = array_key_exists('limit', $params) ? (int)$params['limit'] : 10;//items per page
+
+    $offset = array_key_exists('offset', $params) ? (int)$params['offset'] : 0;// offset of the first item
+
+    //Get search terms
+    $term = array_key_exists('q', $params) ? $params['q'] : null;
+
+    if (!is_null($term)) {
+
+        $posts = Post::searchPosts($term);
+        $payload_final = [];
+
+        foreach ($posts as $_post){
+            $payload[$_post->post_id] = [
+                'user_id' => $_post->user_id,
+                'title' => $_post->title,
+                'content' => $_post->content,
+                'book_id' => $_post->book_id,
+                'movie_id' => $_post->movie_id,
+                'created_at' => $_post->created_at
+            ];
+        }
+    } else {
+
+        //Pagination
+        $links = Post::getLinks($request, $limit, $offset);
+
+        // sort the posts based on parameters
+        $sort_key_array = Post::getSortKeys($request);
+        $query = Post::with('comments');
+
+        $query = $query->skip($offset)->take($limit);  // limit the rows
+
+        // sort the output by one or more columns
+        foreach ($sort_key_array as $column => $direction) {
+
+            $query->orderBy($column, $direction);
+
+        }
+
+        $posts = $query->get();
+        $payload = [];
+
+        foreach ($posts as $_post){
+            $payload[$_post->post_id] = [
+                'user_id' => $_post->user_id,
+                'title' => $_post->title,
+                'content' => $_post->content,
+                'book_id' => $_post->book_id,
+                'movie_id' => $_post->movie_id,
+                'created_at' => $_post->created_at
+            ];
+        }
+
+        $payload_final = [
+            'totalCount' => $count,
+            'limit' => $limit,
+            'offset' => $offset,
+            'links' => $links,
+            'sort' => $sort_key_array,
+            'data' => $payload
         ];
+
     }
-    return $response->withStatus(200) -> withJson($payload);
+
+    //return a success code with the payload
+    return $response->withStatus(200)->withJson($payload_final);
 });
 
 //GET a post info using the post_id
@@ -674,26 +903,84 @@ $app->patch('/posts/{id}', function ($request, $response, $args) {
  * /comment
  * /comment/{id}
  *
- * TODO: Add CRUD related functions, Add search, sort, and paginate functions
+ * TODO: Fix search functions (empty payload error)
  *
  * */
 
 //GET all comments
 $app->get("/comments", function (Request $request, Response $response, array $args){
 
-    $comments = Comment::all();
+    //Get the total number of comments
+    $count = Comment::count();
 
-    $payload = [];
+    //Get querystring variable from url
+    $params = $request->getQueryParams();
 
-    foreach ($comments as $comment){
-        $payload[$comment->comment_id] = [
-            'post_id' => $comment->post_id,
-            'user_id' => $comment->user_id,
-            'content' => $comment->content,
-            'createdAt' => $comment->createdAt
+    //Do limit and offset exist?
+    $limit = array_key_exists('limit', $params) ? (int)$params['limit'] : 10;//items per page
+
+    $offset = array_key_exists('offset', $params) ? (int)$params['offset'] : 0;// offset of the first item
+
+    //Get search terms
+    $term = array_key_exists('q', $params) ? $params['q'] : null;
+
+    if (!is_null($term)) {
+
+        $comments = Comment::searchComments($term);
+        $payload_final = [];
+
+        foreach ($comments as $comment){
+            $payload[$comment->comment_id] = [
+                'post_id' => $comment->post_id,
+                'user_id' => $comment->user_id,
+                'content' => $comment->content,
+                'createdAt' => $comment->createdAt
+            ];
+        }
+    } else {
+
+        //Pagination
+        $links = Comment::getLinks($request, $limit, $offset);
+
+        // sort the comments based on parameters
+        $sort_key_array = Comment::getSortKeys($request);
+        $query = Comment::with('post');
+
+        $query = $query->skip($offset)->take($limit);  // limit the rows
+
+        // sort the output by one or more columns
+        foreach ($sort_key_array as $column => $direction) {
+
+            $query->orderBy($column, $direction);
+
+        }
+
+        $comments = $query->get();
+        $payload = [];
+
+        foreach ($comments as $comment){
+            $payload[$comment->comment_id] = [
+                'post_id' => $comment->post_id,
+                'user_id' => $comment->user_id,
+                'content' => $comment->content,
+                'createdAt' => $comment->createdAt
+            ];
+        }
+
+        $payload_final = [
+            'totalCount' => $count,
+            'limit' => $limit,
+            'offset' => $offset,
+            'links' => $links,
+            'sort' => $sort_key_array,
+            'data' => $payload
         ];
+
     }
-    return $response->withStatus(200) -> withJson($payload);
+
+    //return a success code with the payload
+    return $response->withStatus(200)->withJson($payload_final);
+
 });
 
 
@@ -712,6 +999,92 @@ $app->get("/comments/{id}", function (Request $request, Response $response, arra
     ];
 
     return $response->withStatus(200)->withJson($payload);
+
+
+});
+
+//create a new comment using post method
+$app->post('/comments', function ($request, $response, $args) {
+
+    $comment = new Comment();
+
+    $post_id = $request->getParsedBodyParam('post_id');
+    $user_id = $request->getParsedBodyParam('user_id');
+    $content = $request->getParsedBodyParam('content');
+
+
+
+
+    $comment->post_id = $post_id;
+    $comment->user_id = $user_id;
+    $comment->content = $content;
+
+
+
+    $comment->save();
+
+    if ($comment->user_id && $comment->content) {
+        $payload = [
+            'comment_id' => $comment->comment_id,
+            'comment_uri' => '/comments/' . $comment->comment_id
+        ];
+
+        return $response->withStatus(201)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
+
+});
+
+//delete a comment using delete method
+$app->delete('/comments/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $comment = Comment::find($id);
+    $comment->delete();
+
+    if ($comment->exists) {
+
+        return $response->withStatus(500);
+
+    } else {
+
+        return $response->withStatus(204)->getBody()->write("Comment '/comments/$id' has been deleted.");
+
+    }
+});
+
+//update a current comment information using patch method
+$app->patch('/comments/{id}', function ($request, $response, $args) {
+
+    $id = $args['id'];
+    $comment = Comment::findOrFail($id);
+    $params = $request->getParsedBody();
+
+    foreach ($params as $field => $value) {
+        $comment->$field = $value;
+    }
+
+    $comment->save();
+
+    if ($comment->comment_id) {
+        $payload = [
+            'post_id' => $comment->post_id,
+            'user_id' => $comment->user_id,
+            'content' => $comment->content,
+            'created_at' => $comment->created_at
+        ];
+
+        return $response->withStatus(200)->withJson($payload);
+
+    } else {
+
+        return $response->withStatus(500);
+
+    }
 });
 
 
