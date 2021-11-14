@@ -57,7 +57,7 @@ $app->get("/books", function (Request $request, Response $response, array $args)
         $payload_final = [];
 
         foreach ($books as $book) {
-            $payload[$book->book_id] = [
+            $payload_final[$book->book_id] = [
                 'bookTitle' => $book->bookTitle,
                 'bookAuthor' => $book->bookAuthor,
                 'bookISBN' => $book->bookISBN,
@@ -269,7 +269,7 @@ $app->get("/movies", function (Request $request, Response $response, array $args
         $payload_final = [];
 
         foreach ($movies as $movie){
-            $payload[$movie->movie_id] = [
+            $payload_final[$movie->movie_id] = [
                 'movieTitle' => $movie->movieTitle,
                 'movieDirector' => $movie->movieDirector,
                 'movieReleaseDate' => $movie->movieReleaseDate,
@@ -480,7 +480,7 @@ $app->get("/users", function (Request $request, Response $response, array $args)
         $payload_final = [];
 
         foreach ($users as $user){
-            $payload[$user->user_id] = [
+            $payload_final[$user->user_id] = [
                 'firstname' => $user->firstname,
                 'lastname' => $user->lastname,
                 'email' => $user->email,
@@ -713,7 +713,7 @@ $app->get("/posts", function (Request $request, Response $response, array $args)
         $payload_final = [];
 
         foreach ($posts as $_post){
-            $payload[$_post->post_id] = [
+            $payload_final[$_post->post_id] = [
                 'user_id' => $_post->user_id,
                 'title' => $_post->title,
                 'content' => $_post->content,
@@ -930,7 +930,7 @@ $app->get("/comments", function (Request $request, Response $response, array $ar
         $payload_final = [];
 
         foreach ($comments as $comment){
-            $payload[$comment->comment_id] = [
+            $payload_final[$comment->comment_id] = [
                 'post_id' => $comment->post_id,
                 'user_id' => $comment->user_id,
                 'content' => $comment->content,
