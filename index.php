@@ -29,8 +29,6 @@ $app->get('/', function($request, $response, $args){
  * /books/{id}
  * /books/{id}/posts
  *
- * TODO:  fix empty payload error for search
- *
  * */
 
 
@@ -243,8 +241,6 @@ $app->patch('/books/{id}', function ($request, $response, $args) {
  * /movies/{id}
  * /movies/{id}/posts
  *
- * TODO:  fix empty payload error for search
- *
  * */
 
 //GET all movies
@@ -453,8 +449,6 @@ $app->patch('/movies/{id}', function ($request, $response, $args) {
  * /users/{id}
  * /users/{id}/posts
  * /users/{id}/comments
- *
- * TODO: fix empty payload error for search function
  *
  * */
 
@@ -686,8 +680,6 @@ $app->patch('/users/{id}', function ($request, $response, $args) {
  * /posts/{id}
  * /posts/{id}/comments
  *
- * TODO: fix empty payload error with search function
- *
  * */
 
 //GET all posts
@@ -902,8 +894,6 @@ $app->patch('/posts/{id}', function ($request, $response, $args) {
 
  * /comment
  * /comment/{id}
- *
- * TODO: Fix search functions (empty payload error)
  *
  * */
 
