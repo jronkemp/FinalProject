@@ -31,7 +31,6 @@ $app->get('/', function($request, $response, $args){
  *
  * */
 
-
 //GET all books
 $app->get("/books", function (Request $request, Response $response, array $args){
 
@@ -150,29 +149,31 @@ $app -> get('/books/{id}/posts', function(Request $request, Response $response, 
     return $response->withStatus(200)->withJson($payload);
 });
 
-//create a new movie using post method
+//create a new book using post method
 $app->post('/books', function ($request, $response, $args) {
 
-    $movie = new Movie();
+    $book = new Book();
 
-    $movieTitle = $request->getParsedBodyParam('movieTitle');
-    $movieDirector = $request->getParsedBodyParam('movieDirector', '');
-    $movieReleaseDate = $request->getParsedBodyParam('movieReleaseDate','');
-    $movieCoverImage = $request->getParsedBodyParam('movieCoverImage', null);
-
-
-    $movie->movieTitle = $movieTitle;
-    $movie->movieDirector = $movieDirector;
-    $movie->movieReleaseDate = $movieReleaseDate;
-    $movie->movieCoverImage = $movieCoverImage;
+    $bookTitle = $request->getParsedBodyParam('bookTitle');
+    $bookAuthor = $request->getParsedBodyParam('bookAuthor', '');
+    $bookISBN = $request->getParsedBodyParam('bookISBN','');
+    $bookReleaseDate = $request->getParsedBodyParam('bookReleaseDate','');
+    $bookCoverImage = $request->getParsedBodyParam('bookCoverImage', null);
 
 
-    $movie->save();
+    $book->bookTitle = $bookTitle;
+    $book->bookAuthor = $bookAuthor;
+    $book->bookISBN = $bookISBN;
+    $book->bookReleaseDate = $bookReleaseDate;
+    $book->bookCoverImage = $bookCoverImage;
 
-    if ($movie->movieTitle) {
+
+    $book->save();
+
+    if ($book->bookTitle) {
         $payload = [
-            'movie_id' => $movie->movie_id,
-            'movie_uri' => '/movies/' . $movie->movie_id
+            'movie_id' => $book->book_id,
+            'movie_uri' => '/movies/' . $book->book_id
         ];
 
         return $response->withStatus(201)->withJson($payload);
@@ -185,45 +186,45 @@ $app->post('/books', function ($request, $response, $args) {
 
 });
 
-//delete a movie using delete method
+//delete a book using delete method
 $app->delete('/books/{id}', function ($request, $response, $args) {
 
     $id = $args['id'];
-    $movie = Movie::find($id);
-    $movie->delete();
+    $book = Book::find($id);
+    $book->delete();
 
-    if ($movie->exists) {
+    if ($book->exists) {
 
         return $response->withStatus(500);
 
     } else {
 
-        return $response->withStatus(204)->getBody()->write("Movie '/movies/$id' has been deleted.");
+        return $response->withStatus(204)->getBody()->write("Book '/books/$id' has been deleted.");
 
     }
 });
 
-//update a current movie information using patch method
+//update a current book information using patch method
 $app->patch('/books/{id}', function ($request, $response, $args) {
 
     $id = $args['id'];
-    $movie = Movie::findOrFail($id);
+    $book = Book::findOrFail($id);
     $params = $request->getParsedBody();
 
     foreach ($params as $field => $value) {
-        $movie->$field = $value;
+        $book->$field = $value;
     }
 
-    $movie->save();
+    $book->save();
 
-    if ($movie->movie_id) {
+    if ($book->book_id) {
         $payload = [
-            'movie_id' => $movie->movie_id,
-            'movieTitle' => $movie->movieTitle,
-            'movieDirector' => $movie->movieDirector,
-            'movieReleaseDate' => $movie->movieReleaseDate,
-            'movieCoverImage' => $movie->movieCoverImage,
-            'movie_uri' => '/movies/' . $movie->movie_id
+            'book_id' => $book->book_id,
+            'bookTitle' => $book->bookTitle,
+            'bookAuthor' => $book->bookAuthor,
+            'bookISBN' => $book->bookISBN,
+            'bookReleaseDate' => $book->bookReleaseDate,
+            'bookCoverImage' => $book->bookCoverImage
         ];
 
         return $response->withStatus(200)->withJson($payload);
