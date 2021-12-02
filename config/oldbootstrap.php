@@ -2,7 +2,7 @@
 /**
  * Author: Jaron Kempson
  * Date: 10/25/21
- * File: bootstrap.php
+ * File: oldbootstrap.php
  * Description:
  */
 
@@ -34,6 +34,7 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 $container = $app->getContainer();
+
 $container['db'] = function($container)use($capsule){
     return $capsule;
 };

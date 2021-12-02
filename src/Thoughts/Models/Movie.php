@@ -85,4 +85,67 @@ class Movie extends Model {
         $results = $query->get();
         return $results;
     }
+
+    //get all movies
+    public static function getMovies()
+    {
+        //all() method only retrieves the movies.
+        $movies = self::all();
+        return $movies;
+    }
+
+    //get a movies by id
+    public static function getMovieById($id)
+    {
+        $movie = self::findOrFail($id);
+        return $movie;
+    }
+
+    // Create a new Movie
+    public static function createMovie($request)
+    {
+        // Retrieve parameters from request body
+        $params = $request->getParsedBody();
+
+        // Create a new Movie instance
+        $movie = new Comment();
+
+        // Set the movies's attributes
+        foreach ($params as $field => $value) {
+
+            $movie->$field = $value;
+        }
+
+        // Insert the movie into the database
+        $movie->save();
+        return $movie;
+    }
+
+    // Update a movie
+    public static function updateMovie($request)
+    {
+        // Retrieve parameters from request body
+        $params = $request->getParsedBody();
+
+        //Retrieve the movie's id from url and then the movie from the database
+        $id = $request->getAttribute('book_id');
+        $movie = self::findOrFail($id);
+
+        // Update attributes of the movie
+        $movie->email = $params['email'];
+        $movie->username = $params['username'];
+        $movie->password = password_hash($params['password'], PASSWORD_DEFAULT);
+
+        // Update the book
+        $movie->save();
+        return $movie;
+    }
+
+    // Delete a movie
+    public static function deleteMovie($id)
+    {
+        $movie = self::findOrFail($id);
+        return ($movie->delete());
+    }
+
 }

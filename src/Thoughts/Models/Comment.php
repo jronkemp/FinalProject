@@ -81,4 +81,66 @@ class Comment extends Model{
         $results = $query->get();
         return $results;
     }
+
+    //get all comments
+    public static function getComments()
+    {
+        //all() method only retrieves the comments.
+        $comments = self::all();
+        return $comments;
+    }
+
+    //get a comment by id
+    public static function getCommentById($id)
+    {
+        $comment = self::findOrFail($id);
+        return $comment;
+    }
+
+    // Create a new comment
+    public static function createComment($request)
+    {
+        // Retrieve parameters from request body
+        $params = $request->getParsedBody();
+
+        // Create a new User instance
+        $comment = new Comment();
+
+        // Set the comments's attributes
+        foreach ($params as $field => $value) {
+
+            $comment->$field = $value;
+        }
+
+        // Insert the user into the database
+        $comment->save();
+        return $comment;
+    }
+
+    // Update a comment
+    public static function updateComment($request)
+    {
+        // Retrieve parameters from request body
+        $params = $request->getParsedBody();
+
+        //Retrieve the user's id from url and then the user from the database
+        $id = $request->getAttribute('comment_id');
+        $comment = self::findOrFail($id);
+
+        // Update attributes of the professor
+        $comment->email = $params['email'];
+        $comment->username = $params['username'];
+        $comment->password = password_hash($params['password'], PASSWORD_DEFAULT);
+
+        // Update the professor
+        $comment->save();
+        return $comment;
+    }
+
+    // Delete a comment
+    public static function deleteComment($id)
+    {
+        $comment = self::findOrFail($id);
+        return ($comment->delete());
+    }
 }

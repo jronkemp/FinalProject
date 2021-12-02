@@ -85,4 +85,67 @@ class Book extends Model {
         $results = $query->get();
         return $results;
     }
+
+    //get all books
+    public static function getBooks()
+    {
+        //all() method only retrieves the comments.
+        $books = self::all();
+        return $books;
+    }
+
+    //get a book by id
+    public static function getBookById($id)
+    {
+        $book = self::findOrFail($id);
+        return $book;
+    }
+
+    // Create a new book
+    public static function createBook($request)
+    {
+        // Retrieve parameters from request body
+        $params = $request->getParsedBody();
+
+        // Create a new Book instance
+        $book = new Comment();
+
+        // Set the books's attributes
+        foreach ($params as $field => $value) {
+
+            $book->$field = $value;
+        }
+
+        // Insert the book into the database
+        $book->save();
+        return $book;
+    }
+
+    // Update a book
+    public static function updateBook($request)
+    {
+        // Retrieve parameters from request body
+        $params = $request->getParsedBody();
+
+        //Retrieve the book's id from url and then the book from the database
+        $id = $request->getAttribute('book_id');
+        $book = self::findOrFail($id);
+
+        // Update attributes of the book
+        $book->email = $params['email'];
+        $book->username = $params['username'];
+        $book->password = password_hash($params['password'], PASSWORD_DEFAULT);
+
+        // Update the book
+        $book->save();
+        return $book;
+    }
+
+    // Delete a book
+    public static function deleteBook($id)
+    {
+        $book = self::findOrFail($id);
+        return ($book->delete());
+    }
+
 }

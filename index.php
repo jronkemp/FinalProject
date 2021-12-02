@@ -7,21 +7,7 @@
  */
 
 require __DIR__."/vendor/autoload.php";
-require __DIR__."/bootstrap.php";
-
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Thoughts\Models\Book;
-use Thoughts\Models\Movie;
-use Thoughts\Models\User;
-use Thoughts\Models\Post;
-use Thoughts\Models\Comment;
-
-
-//Shows the message "Hello, this is the homepage".
-$app->get('/', function($request, $response, $args){
-    return $response->write("Hello, this is the Thoughts homepage.");
-});
+require __DIR__ . "/config/bootstrap.php";
 
 /* These are the endpoints that access the book related resources
 
@@ -29,7 +15,7 @@ $app->get('/', function($request, $response, $args){
  * /books/{id}
  * /books/{id}/posts
  *
- * */
+ *
 
 //GET all books
 $app->get("/books", function (Request $request, Response $response, array $args){
@@ -235,6 +221,7 @@ $app->patch('/books/{id}', function ($request, $response, $args) {
 
     }
 });
+*/
 
 /* These are the endpoints that access the movie related resources
 
@@ -451,7 +438,9 @@ $app->patch('/movies/{id}', function ($request, $response, $args) {
  * /users/{id}/posts
  * /users/{id}/comments
  *
- * */
+ *
+
+
 
 //GET all users
 $app->get("/users", function (Request $request, Response $response, array $args){
@@ -674,14 +663,14 @@ $app->patch('/users/{id}', function ($request, $response, $args) {
 
     }
 });
-
+*/
 /* These are the endpoints that access the post related resources
 
  * /posts
  * /posts/{id}
  * /posts/{id}/comments
  *
- * */
+ *
 
 //GET all posts
 $app->get("/posts", function (Request $request, Response $response, array $args){
@@ -889,14 +878,13 @@ $app->patch('/posts/{id}', function ($request, $response, $args) {
 
     }
 });
-
-
+*/
 /* These are the endpoints that access the comment related resources
 
  * /comment
  * /comment/{id}
  *
- * */
+ *
 
 //GET all comments
 $app->get("/comments", function (Request $request, Response $response, array $args){
@@ -1077,6 +1065,4 @@ $app->patch('/comments/{id}', function ($request, $response, $args) {
 
     }
 });
-
-
-$app->run();
+*/
