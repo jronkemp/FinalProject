@@ -120,19 +120,22 @@ class Comment extends Model{
     // Update a comment
     public static function updateComment($request)
     {
+
+        //Retrieve the comment's id from url and then the comment from the database
+        $id = $request->getAttribute('id');
+        $comment = self::findOrFail($id);
+
         // Retrieve parameters from request body
         $params = $request->getParsedBody();
 
-        //Retrieve the user's id from url and then the user from the database
-        $id = $request->getAttribute('comment_id');
-        $comment = self::findOrFail($id);
+        // Update attributes of the comment
+        foreach ($params as $field => $value) {
 
-        // Update attributes of the professor
-        $comment->email = $params['email'];
-        $comment->username = $params['username'];
-        $comment->password = password_hash($params['password'], PASSWORD_DEFAULT);
+            $comment->$field = $value;
+        }
 
-        // Update the professor
+
+        // Update the comment
         $comment->save();
         return $comment;
     }

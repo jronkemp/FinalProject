@@ -48,7 +48,7 @@ class MovieController {
 
         $movie = Movie::updateMovie($request);
         $results = [
-            'status' => 'book updated',
+            'status' => 'movie updated',
             'data' => $movie
         ];
         $code = array_key_exists('status', $results) ? 200 : 500;

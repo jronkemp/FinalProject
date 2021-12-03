@@ -108,9 +108,9 @@ class Movie extends Model {
         $params = $request->getParsedBody();
 
         // Create a new Movie instance
-        $movie = new Comment();
+        $movie = new Movie();
 
-        // Set the movies's attributes
+        // Set the movie's attributes
         foreach ($params as $field => $value) {
 
             $movie->$field = $value;
@@ -124,19 +124,22 @@ class Movie extends Model {
     // Update a movie
     public static function updateMovie($request)
     {
+
+
+        //Retrieve the movie's id from url and then the movie from the database
+        $id = $request->getAttribute('id');
+        $movie = self::findOrFail($id);
+
         // Retrieve parameters from request body
         $params = $request->getParsedBody();
 
-        //Retrieve the movie's id from url and then the movie from the database
-        $id = $request->getAttribute('book_id');
-        $movie = self::findOrFail($id);
-
         // Update attributes of the movie
-        $movie->email = $params['email'];
-        $movie->username = $params['username'];
-        $movie->password = password_hash($params['password'], PASSWORD_DEFAULT);
+        foreach ($params as $field => $value) {
 
-        // Update the book
+            $movie->$field = $value;
+        }
+
+        // Update the movie
         $movie->save();
         return $movie;
     }

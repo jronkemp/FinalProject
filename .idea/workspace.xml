@@ -19,11 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="routes.php for the MVC file conversion">
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="AUTHENticaiton files. Still error prone">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Thoughts/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Controllers/MovieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Controllers/MovieController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Controllers/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Movie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Movie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/User.php" afterDir="false" />
     </list>
@@ -101,7 +104,7 @@
       <workItem from="1635975939299" duration="1288000" />
       <workItem from="1636338593031" duration="18606000" />
       <workItem from="1638228262238" duration="24000" />
-      <workItem from="1638410928155" duration="14414000" />
+      <workItem from="1638410928155" duration="20717000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -201,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638422056758</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="AUTHENticaiton files. Still error prone">
+      <created>1638552232539</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1638552232539</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,13 +244,18 @@
     <MESSAGE value="Converting the files to MVC style. everything is run out of routes.php now" />
     <MESSAGE value="More files for the conversion" />
     <MESSAGE value="routes.php for the MVC file conversion" />
-    <option name="LAST_COMMIT_MESSAGE" value="routes.php for the MVC file conversion" />
+    <MESSAGE value="AUTHENticaiton files. Still error prone" />
+    <option name="LAST_COMMIT_MESSAGE" value="AUTHENticaiton files. Still error prone" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1638420541148">
+    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1638560873572">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1638420541148" />
+    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1638560873572" />
+    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1638569107128">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1638569107128" />
     <state x="524" y="249" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1638420590183">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -272,12 +287,12 @@
     </state>
     <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
     <state x="352" y="147" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1638412864028" />
-    <state x="420" y="231" key="Vcs.Push.Dialog.v2" timestamp="1638422058565">
+    <state x="420" y="231" key="Vcs.Push.Dialog.v2" timestamp="1638552239570">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1636930293634" />
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.61.1920.1055/0.0.1920.1080@0.0.1920.1080" timestamp="1636944752875" />
-    <state x="420" y="231" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1638422058565" />
+    <state x="420" y="231" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1638552239570" />
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1635736900147" />
     <state x="343" y="64" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1638472062683">
       <screen x="0" y="0" width="1440" height="900" />

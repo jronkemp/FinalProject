@@ -22,7 +22,7 @@ return [
      * This array contains database connection settings.
      */
     'db' => [
-        'driver' => "mysql",
+        'driver' => 'mysql',
         'host' => 'localhost',
         'port' => 8000,
         'database' => 'thoughts',

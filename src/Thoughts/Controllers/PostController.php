@@ -44,7 +44,7 @@ class PostController {
         // Validation has passed; Proceed to create the post
         $post = Post::createPost($request);
         $results = [
-            'status' => 'user created',
+            'status' => 'post created',
             'data' => $post
         ];
         $code = array_key_exists('status', $results) ? 201 : 500;
@@ -57,7 +57,7 @@ class PostController {
 
         $post = Post::updatePost($request);
         $results = [
-            'status' => 'user updated',
+            'status' => 'post updated',
             'data' => $post
         ];
         $code = array_key_exists('status', $results) ? 200 : 500;
@@ -68,6 +68,7 @@ class PostController {
     public function delete(Request $request, Response $response, array $args)
     {
         $id = $args['id'];
+
         Post::deletePost($id);
         $results = [
             'status' => 'Post deleted',

@@ -87,16 +87,15 @@ class User extends Model{
     public static function getUsers()
     {
         //all() method only retrieves the users.
-        $users = self::all();
-        return $users;
+
+        return self::all();
     }
 
 
     //get a user by id
     public static function getUserById($id)
     {
-        $user = self::findOrFail($id);
-        return $user;
+        return self::findOrFail($id);
     }
 
     //get all messages post by a user
@@ -148,12 +147,17 @@ class User extends Model{
         $id = $request->getAttribute('id');
         $user = self::findOrFail($id);
 
-        // Update attributes of the professor
-        $user->email = $params['email'];
-        $user->username = $params['username'];
-        $user->password = password_hash($params['password'], PASSWORD_DEFAULT);
+        // Update attributes of the user
+//        $user->email = $params['email'];
+//        $user->username = $params['username'];
+//        $user->password = password_hash($params['password'], PASSWORD_DEFAULT);
 
-        // Update the professor
+        foreach ($params as $field => $value) {
+
+            $user->$field = $value;
+        }
+
+        // Update the user
         $user->save();
         return $user;
     }

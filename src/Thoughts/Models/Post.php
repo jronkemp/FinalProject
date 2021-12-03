@@ -126,13 +126,8 @@ class Post extends Model{
         // Create a new Post instance
         $post = new Post();
 
-        // Set the user's attributes
+        // Set the post's attributes
         foreach ($params as $field => $value) {
-
-            // Need to hash password
-            if ($field == 'password') {
-                $value = password_hash($value, PASSWORD_DEFAULT);
-            }
 
             $post->$field = $value;
         }
@@ -145,17 +140,21 @@ class Post extends Model{
     // Update a post
     public static function updatePost($request)
     {
-        // Retrieve parameters from request body
-        $params = $request->getParsedBody();
+
 
         //Retrieve the post's id from url and then the post from the database
         $id = $request->getAttribute('id');
         $post = self::findOrFail($id);
 
-        // Update attributes of the post
-        $post->email = $params['email'];
-        $post->username = $params['username'];
-        $post->password = password_hash($params['password'], PASSWORD_DEFAULT);
+        // Retrieve parameters from request body
+        $params = $request->getParsedBody();
+
+//        // Update attributes of the post
+
+        foreach($params as $field => $value) {
+
+            $post->$field = $value;
+        }
 
         // Update the post
         $post->save();

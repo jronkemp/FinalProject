@@ -108,9 +108,9 @@ class Book extends Model {
         $params = $request->getParsedBody();
 
         // Create a new Book instance
-        $book = new Comment();
+        $book = new Book();
 
-        // Set the books's attributes
+        // Set the book's attributes
         foreach ($params as $field => $value) {
 
             $book->$field = $value;
@@ -128,13 +128,14 @@ class Book extends Model {
         $params = $request->getParsedBody();
 
         //Retrieve the book's id from url and then the book from the database
-        $id = $request->getAttribute('book_id');
+        $id = $request->getAttribute('id');
         $book = self::findOrFail($id);
 
         // Update attributes of the book
-        $book->email = $params['email'];
-        $book->username = $params['username'];
-        $book->password = password_hash($params['password'], PASSWORD_DEFAULT);
+        foreach ($params as $field => $value) {
+
+            $book->$field = $value;
+        }
 
         // Update the book
         $book->save();
