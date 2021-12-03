@@ -6,6 +6,11 @@
  * Description:
  */
 
+use Thoughts\Middleware\Logging as ThoughtsLogging;
+use Thoughts\Authentication\MyAuthenticator;
+use Thoughts\Authentication\BasicAuthenticator;
+use Thoughts\Authentication\BearerAuthenticator;
+
 //Shows the message "Hello, this is the thoughts homepage".
 $app->get('/', function($request, $response, $args){
     return $response->write("Hello, this is the Thoughts homepage.");
@@ -22,6 +27,8 @@ $app->group('/users', function () {
     $this->post('', 'UserController:create');
     $this->patch('/{id}', 'UserController:update');
     $this->delete('/{id}', 'UserController:delete');
+
+    $this->post('/authBearer', 'UserController:authBearer');
 
 });
 
@@ -74,4 +81,13 @@ $app->group('/movies', function () {
 
 });
 
+//to protect certain resources from un authenticated users we can group routes under a blank group and link this at the end
+//})->add(new BearerAuthenticator());
+//reference practice 3,4 for more info
+
+//$app->add(new MyAuthenticator());
+//$app->add(new BasicAuthenticator());
+
+//$app->add(new BearerAuthenticator());
+//$app->add(new ThoughtsLogging());
 $app->run();

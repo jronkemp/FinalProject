@@ -95,7 +95,7 @@ class Post extends Model{
         return $results;
     }
 
-    //get all users
+    //get all posts
     public static function getPosts()
     {
         //all() method only retrieves the comments.
@@ -103,28 +103,28 @@ class Post extends Model{
         return $posts;
     }
 
-    //get a user by id
+    //get a post by id
     public static function getPostById($id)
     {
         $post = self::findOrFail($id);
         return $post;
     }
 
-    //get all comments posted by a user
+    //get all comments under a post
     public static function getCommentsByPost($id)
     {
         $comments = self::findOrFail($id)->comments;
         return $comments;
     }
 
-    // Create a new user
+    // Create a new post
     public static function createPost($request)
     {
         // Retrieve parameters from request body
         $params = $request->getParsedBody();
 
-        // Create a new User instance
-        $user = new User();
+        // Create a new Post instance
+        $post = new Post();
 
         // Set the user's attributes
         foreach ($params as $field => $value) {
@@ -134,39 +134,39 @@ class Post extends Model{
                 $value = password_hash($value, PASSWORD_DEFAULT);
             }
 
-            $user->$field = $value;
+            $post->$field = $value;
         }
 
-        // Insert the user into the database
-        $user->save();
-        return $user;
+        // Insert the post into the database
+        $post->save();
+        return $post;
     }
 
-    // Update a user
+    // Update a post
     public static function updatePost($request)
     {
         // Retrieve parameters from request body
         $params = $request->getParsedBody();
 
-        //Retrieve the user's id from url and then the user from the database
+        //Retrieve the post's id from url and then the post from the database
         $id = $request->getAttribute('id');
-        $user = self::findOrFail($id);
+        $post = self::findOrFail($id);
 
-        // Update attributes of the professor
-        $user->email = $params['email'];
-        $user->username = $params['username'];
-        $user->password = password_hash($params['password'], PASSWORD_DEFAULT);
+        // Update attributes of the post
+        $post->email = $params['email'];
+        $post->username = $params['username'];
+        $post->password = password_hash($params['password'], PASSWORD_DEFAULT);
 
-        // Update the professor
-        $user->save();
-        return $user;
+        // Update the post
+        $post->save();
+        return $post;
     }
 
-    // Delete a user
+    // Delete a post
     public static function deletePost($id)
     {
-        $user = self::findOrFail($id);
-        return ($user->delete());
+        $post = self::findOrFail($id);
+        return ($post->delete());
     }
 
 }

@@ -222,14 +222,13 @@ $app->patch('/books/{id}', function ($request, $response, $args) {
     }
 });
 */
-
 /* These are the endpoints that access the movie related resources
 
  * /movies
  * /movies/{id}
  * /movies/{id}/posts
  *
- * */
+ *
 
 //GET all movies
 $app->get("/movies", function (Request $request, Response $response, array $args){
@@ -429,8 +428,7 @@ $app->patch('/movies/{id}', function ($request, $response, $args) {
 
     }
 });
-
-
+*/
 /* These are the endpoints that access the user related resources
 
  * /users

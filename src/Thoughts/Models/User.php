@@ -91,6 +91,7 @@ class User extends Model{
         return $users;
     }
 
+
     //get a user by id
     public static function getUserById($id)
     {
@@ -162,6 +163,18 @@ class User extends Model{
     {
         $user = self::findOrFail($id);
         return ($user->delete());
+    }
+
+    // Authenticate a user by username and password. Return the user.
+    public static function authenticateUser($username, $password) {
+
+        $user = self::where('username', $username)->first();
+
+        if (!$user) {
+            return false;
+        }
+
+        return password_verify($password, $user->password) ? $user : false;
     }
 
 }
