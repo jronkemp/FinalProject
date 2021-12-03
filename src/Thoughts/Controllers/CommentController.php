@@ -35,7 +35,7 @@ class CommentController{
         // Validation has passed; Proceed to create the professor
         $comment = Comment::createComment($request);
         $results = [
-            'status' => 'user created',
+            'status' => 'comment created',
             'data' => $comment
         ];
         $code = array_key_exists('status', $results) ? 201 : 500;
@@ -48,7 +48,7 @@ class CommentController{
 
         $comment = Comment::updateComment($request);
         $results = [
-            'status' => 'user updated',
+            'status' => 'comment updated',
             'data' => $comment
         ];
         $code = array_key_exists('status', $results) ? 200 : 500;
