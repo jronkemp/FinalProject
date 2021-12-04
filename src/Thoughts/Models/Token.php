@@ -21,7 +21,7 @@ class Token extends Model {
 
     public static function generateBearer($id) {
 
-        $token = self::where('user', $id)->first();
+        $token = self::where('user_id', $id)->first();
 
         $expire = time() - self::EXPIRE;  // Token expires in 60 seconds
         if ($token) {
@@ -39,7 +39,7 @@ class Token extends Model {
 
         //Create a new token
         $token = new Token();
-        $token->user = $id;
+        $token->user_id = $id;
         $token->value = bin2hex(random_bytes(64));
         $token->save();
         return $token->value;

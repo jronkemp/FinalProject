@@ -32,57 +32,59 @@ $app->group('/users', function () {
 
 });
 
-//post routes
-$app->group('/posts', function () {
+$app->group('', function(){
+    //post routes
+    $this->group('/posts', function () {
 
-    $this->get('', 'PostController:index');
-    $this->get('/{id}', 'PostController:view');
-    $this->get('/{id}/comments', 'PostController:viewPostComments');
+        $this->get('', 'PostController:index');
+        $this->get('/{id}', 'PostController:view');
+        $this->get('/{id}/comments', 'PostController:viewPostComments');
 
-    $this->post('', 'PostController:create');
-    $this->patch('/{id}', 'PostController:update');
-    $this->delete('/{id}', 'PostController:delete');
+        $this->post('', 'PostController:create');
+        $this->patch('/{id}', 'PostController:update');
+        $this->delete('/{id}', 'PostController:delete');
 
-});
+    });
 
-//comment routes
-$app->group('/comments', function () {
+    //comment routes
+    $this->group('/comments', function () {
 
-    $this->get('', 'CommentController:index');
-    $this->get('/{id}', 'CommentController:view');
+        $this->get('', 'CommentController:index');
+        $this->get('/{id}', 'CommentController:view');
 
-    $this->post('', 'CommentController:create');
-    $this->patch('/{id}', 'CommentController:update');
-    $this->delete('/{id}', 'CommentController:delete');
+        $this->post('', 'CommentController:create');
+        $this->patch('/{id}', 'CommentController:update');
+        $this->delete('/{id}', 'CommentController:delete');
 
-});
+    });
 
-//book routes
-$app->group('/books', function () {
+    //book routes
+    $this->group('/books', function () {
 
-    $this->get('', 'BookController:index');
-    $this->get('/{id}', 'BookController:view');
+        $this->get('', 'BookController:index');
+        $this->get('/{id}', 'BookController:view');
 
-    $this->post('', 'BookController:create');
-    $this->patch('/{id}', 'BookController:update');
-    $this->delete('/{id}', 'BookController:delete');
+        $this->post('', 'BookController:create');
+        $this->patch('/{id}', 'BookController:update');
+        $this->delete('/{id}', 'BookController:delete');
 
-});
+    });
 
-//movie routes
-$app->group('/movies', function () {
+    //movie routes
+    $this->group('/movies', function () {
 
-    $this->get('', 'MovieController:index');
-    $this->get('/{id}', 'MovieController:view');
+        $this->get('', 'MovieController:index');
+        $this->get('/{id}', 'MovieController:view');
 
-    $this->post('', 'MovieController:create');
-    $this->patch('/{id}', 'MovieController:update');
-    $this->delete('/{id}', 'MovieController:delete');
+        $this->post('', 'MovieController:create');
+        $this->patch('/{id}', 'MovieController:update');
+        $this->delete('/{id}', 'MovieController:delete');
 
-});
+    });
+})->add(new BearerAuthenticator());
 
 //to protect certain resources from un authenticated users we can group routes under a blank group and link this at the end
-//})->add(new BearerAuthenticator());
+
 //reference practice 3,4 for more info
 
 //$app->add(new MyAuthenticator());

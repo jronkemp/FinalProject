@@ -93,6 +93,7 @@ class UserController {
 
     // Validate a user with username and password. It returns a Bearer token on success
     public function authBearer(Request $request, Response $response) {
+
         $params = $request->getParsedBody();
 
         $username = $params['username'];
