@@ -19,10 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="Trying to get Bearer Authentication To work properly but the token table won't allow me to create a relationship with the users table">
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="Fixed Bearer Authentication, now works with users that have a hashed password (users that were created after the original creation of the database will work). Also fixed error with update routes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Thoughts/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thoughts/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +68,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/respect/stringifier" />
       <path value="$PROJECT_DIR$/vendor/respect/validation" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
     </include_path>
   </component>
   <component name="ProjectId" id="2012lcrWQ2i5LwfNQe5mQp0hQkX" />
@@ -99,7 +108,8 @@
       <workItem from="1636338593031" duration="18606000" />
       <workItem from="1638228262238" duration="24000" />
       <workItem from="1638410928155" duration="23607000" />
-      <workItem from="1638819496082" duration="1524000" />
+      <workItem from="1638819496082" duration="1733000" />
+      <workItem from="1638904291611" duration="474000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -227,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638582450051</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Fixed Bearer Authentication, now works with users that have a hashed password (users that were created after the original creation of the database will work). Also fixed error with update routes">
+      <created>1638862286463</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1638862286463</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +280,8 @@
     <MESSAGE value="AUTHENticaiton files. Still error prone" />
     <MESSAGE value="All CRUD functions work in MVC format except update" />
     <MESSAGE value="Trying to get Bearer Authentication To work properly but the token table won't allow me to create a relationship with the users table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to get Bearer Authentication To work properly but the token table won't allow me to create a relationship with the users table" />
+    <MESSAGE value="Fixed Bearer Authentication, now works with users that have a hashed password (users that were created after the original creation of the database will work). Also fixed error with update routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Bearer Authentication, now works with users that have a hashed password (users that were created after the original creation of the database will work). Also fixed error with update routes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1638560873572">
@@ -274,10 +292,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1638569107128" />
-    <state x="524" y="249" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1638420590183">
+    <state x="524" y="249" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1638904489210">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="524" y="249" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1638420590183" />
+    <state x="524" y="249" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1638904489210" />
     <state x="698" y="299" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1635735381935" />
     <state x="722" y="456" width="475" height="255" key="ComposerInitDialogKey" timestamp="1635198378320">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -295,22 +313,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="628" y="270" key="NewPhpClassDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201474375" />
-    <state x="586" y="389" key="NewPhpFileDialog" timestamp="1638472049197">
+    <state x="586" y="389" key="NewPhpFileDialog" timestamp="1638904664304">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="781" y="467" key="NewPhpFileDialog/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635199774275" />
-    <state x="586" y="389" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1638472049197" />
+    <state x="586" y="389" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1638904664304" />
     <state x="352" y="147" key="SettingsEditor" timestamp="1638412864028">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
     <state x="352" y="147" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1638412864028" />
-    <state x="420" y="231" key="Vcs.Push.Dialog.v2" timestamp="1638582451988">
+    <state x="420" y="231" key="Vcs.Push.Dialog.v2" timestamp="1638862289130">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1636930293634" />
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.61.1920.1055/0.0.1920.1080@0.0.1920.1080" timestamp="1636944752875" />
-    <state x="420" y="231" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1638582451988" />
+    <state x="420" y="231" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1638862289130" />
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1635736900147" />
     <state x="343" y="64" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1638472062683">
       <screen x="0" y="0" width="1440" height="900" />

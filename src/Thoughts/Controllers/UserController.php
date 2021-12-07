@@ -121,4 +121,32 @@ class UserController {
             JSON_PRETTY_PRINT);
     }
 
+
+    // Validate a user with username and password. It returns a JWT token on success.
+    public function authJWT(Request $request, Response $response)
+    {
+        $params = $request->getParsedBody();
+        $username = $params['username'];
+        $password = $params['password'];
+
+        $user = User::authenticateUser($username, $password);
+
+        if ($user) {
+            $status_code = 200;
+            $jwt = User::generateJWT($user->user_id);
+            $results = [
+                'status' => 'login successful',
+                'jwt' => $jwt,
+                'name' => $user->username
+            ];
+        } else {
+            $status_code = 401;
+            $results = [
+                'status' => 'login failed',
+            ];
+        }
+
+        //return $results;
+        return $response->withJson($results, $status_code, JSON_PRETTY_PRINT);
+    }
 }

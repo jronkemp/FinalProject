@@ -10,6 +10,7 @@ use Thoughts\Middleware\Logging as ThoughtsLogging;
 use Thoughts\Authentication\MyAuthenticator;
 use Thoughts\Authentication\BasicAuthenticator;
 use Thoughts\Authentication\BearerAuthenticator;
+use Thoughts\Authentication\JWTAuthenticator;
 
 //Shows the message "Hello, this is the thoughts homepage".
 $app->get('/', function($request, $response, $args){
@@ -29,6 +30,7 @@ $app->group('/users', function () {
     $this->delete('/{id}', 'UserController:delete');
 
     $this->post('/authBearer', 'UserController:authBearer');
+    $this->post('/authJWT', 'UserController:authJWT');
 
 });
 
@@ -81,7 +83,8 @@ $app->group('', function() {
         $this->delete('/{id}', 'MovieController:delete');
 
     });
-})->add(new BearerAuthenticator());
+//})->add(new BearerAuthenticator());
+})-> add(new JWTAuthenticator());
 //});
 
 //to protect certain resources from un authenticated users we can group routes under a blank group and link this at the end

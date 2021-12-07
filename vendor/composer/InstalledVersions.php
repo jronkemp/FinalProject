@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '2bb5f216b949f8ce1b6542dd0373d4f50498fab2',
+    'reference' => 'd50f056daaec3fbfdd22f9c0010d0f6192f07037',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '2bb5f216b949f8ce1b6542dd0373d4f50498fab2',
+      'reference' => 'd50f056daaec3fbfdd22f9c0010d0f6192f07037',
     ),
     'doctrine/inflector' => 
     array (
@@ -52,6 +52,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '4bd5c1cdfcd00e9e2d8c484f79150f67e5d355d9',
+    ),
+    'firebase/php-jwt' => 
+    array (
+      'pretty_version' => 'v5.5.1',
+      'version' => '5.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '83b609028194aa042ea33b5af2d41a7427de80e6',
     ),
     'illuminate/container' => 
     array (

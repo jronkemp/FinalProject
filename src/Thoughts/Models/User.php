@@ -3,9 +3,14 @@
 namespace Thoughts\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Firebase\JWT\JWT;
 
 
 class User extends Model{
+
+    const JWT_KEY = 'my signature';
+    const JWT_EXPIRE = 3600;
+
     protected $table = 'users';
     protected $primaryKey = 'user_id';
 
@@ -179,6 +184,46 @@ class User extends Model{
         }
 
         return password_verify($password, $user->password) ? $user : false;
+    }
+
+    public static function generateJWT($id)
+    {
+        // Data for payload
+        $user = $user = self::findOrFail($id);
+        if (!$user) {
+            return false;
+        }
+
+        $key = self::JWT_KEY;
+        $expiration = time() + self::JWT_EXPIRE;
+        $issuer = 'mychatter-api.com';
+
+        $token = [
+            'iss' => $issuer,
+            'exp' => $expiration,
+            'isa' => time(),
+            'data' => [
+                'uid' => $id,
+                'name' => $user->username,
+                'email' => $user->email,
+            ]
+        ];
+        // Generate and return a token
+        return JWT::encode(
+            $token,   // data to be encoded in the JWT
+            $key,    // the signing key
+            'HS256'   // algorithm used to sign the token; defaults to HS256
+        );
+        // return Token::create($userId, $secret, $expiration, $issuer);
+    }
+
+    // Verify a token
+    public static function validateJWT($token)
+    {
+        $decoded = JWT::decode($token, self::JWT_KEY, array('HS256'));
+        // print_r($decoded); exit;
+        return $decoded;
+
     }
 
 }
