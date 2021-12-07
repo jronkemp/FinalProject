@@ -32,7 +32,7 @@ $app->group('/users', function () {
 
 });
 
-$app->group('', function(){
+$app->group('', function() {
     //post routes
     $this->group('/posts', function () {
 
@@ -82,6 +82,7 @@ $app->group('', function(){
 
     });
 })->add(new BearerAuthenticator());
+//});
 
 //to protect certain resources from un authenticated users we can group routes under a blank group and link this at the end
 

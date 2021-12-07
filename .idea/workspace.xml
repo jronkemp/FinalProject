@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="All CRUD functions work in MVC format except update">
+    <list default="true" id="ae5e293a-2c3f-46f5-9461-336e78d6c3bb" name="Default Changelist" comment="Trying to get Bearer Authentication To work properly but the token table won't allow me to create a relationship with the users table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Thoughts/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thoughts/Controllers/UserController.php" afterDir="false" />
@@ -98,7 +98,8 @@
       <workItem from="1635975939299" duration="1288000" />
       <workItem from="1636338593031" duration="18606000" />
       <workItem from="1638228262238" duration="24000" />
-      <workItem from="1638410928155" duration="23007000" />
+      <workItem from="1638410928155" duration="23607000" />
+      <workItem from="1638819496082" duration="1524000" />
     </task>
     <task id="LOCAL-00001" summary="This Commit adds the get method for all movies as well as for single movies">
       <created>1635201847455</created>
@@ -219,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638572235519</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Trying to get Bearer Authentication To work properly but the token table won't allow me to create a relationship with the users table">
+      <created>1638582450051</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1638582450051</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +262,8 @@
     <MESSAGE value="routes.php for the MVC file conversion" />
     <MESSAGE value="AUTHENticaiton files. Still error prone" />
     <MESSAGE value="All CRUD functions work in MVC format except update" />
-    <option name="LAST_COMMIT_MESSAGE" value="All CRUD functions work in MVC format except update" />
+    <MESSAGE value="Trying to get Bearer Authentication To work properly but the token table won't allow me to create a relationship with the users table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to get Bearer Authentication To work properly but the token table won't allow me to create a relationship with the users table" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1638560873572">
@@ -296,12 +305,12 @@
     </state>
     <state x="469" y="176" key="SettingsEditor/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1635201141136" />
     <state x="352" y="147" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1638412864028" />
-    <state x="420" y="231" key="Vcs.Push.Dialog.v2" timestamp="1638572252489">
+    <state x="420" y="231" key="Vcs.Push.Dialog.v2" timestamp="1638582451988">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.36.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1636930293634" />
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/-1920.61.1920.1055/0.0.1920.1080@0.0.1920.1080" timestamp="1636944752875" />
-    <state x="420" y="231" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1638572252489" />
+    <state x="420" y="231" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1638582451988" />
     <state x="560" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1635736900147" />
     <state x="343" y="64" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1638472062683">
       <screen x="0" y="0" width="1440" height="900" />

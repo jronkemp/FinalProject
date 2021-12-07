@@ -104,7 +104,7 @@ class UserController {
         if ($user) {
 
             $status_code = 200;
-            $token = Token::generateBearer($user->id);
+            $token = Token::generateBearer($user->user_id);
             $results = [
                 'status' => 'login successful',
                 'token' => $token
@@ -113,7 +113,7 @@ class UserController {
         } else {
             $status_code = 401;
             $results = [
-                'status' => 'login failed'
+                'status' => 'login failed. At authenticate User.'
             ];
         }
 
